@@ -1,0 +1,13 @@
+Last Modified Date & Time: 10/05/2016 15:25:54
+
+CE95277 ADC and UART: TopDesign.cysch
+	UART_1 [v2.50] to [v2.50]
+	Rx_1 [v2.20] to [v2.20]
+	Tx_1 [v2.20] to [v2.20]
+	Pin_1 [v2.20] to [v2.20]
+
+CE95277 ADC and UART: CE95277 ADC and UART.cydwr
+	cy_boot [v5.0] to [v5.40]
+	LIN_Dynamic [v3.20] to [v3.40]
+
+

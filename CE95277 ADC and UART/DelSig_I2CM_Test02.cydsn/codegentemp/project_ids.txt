@@ -1,0 +1,8 @@
+C:\Users\Monica P\Desktop\Assignment\CE95277 ADC and UART\power.cydsn\power.cyprj|1abbe4e6-c6f4-4333-9b2a-21d4d28d994d
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|2631cedb-7397-4178-a0d9-46528f06d9c4
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|1103ca7d-63f0-4b2b-8972-2690f82ec65e
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|3ef9bdc3-1cc8-4c41-b670-cab64ead4c97
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|37c2061d-9fdf-419f-86bc-30619b4af035
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|40299997-7bb5-4aeb-b2fd-1e2bf469ea2c
+C:\Users\Monica P\Desktop\Assignment\CE95277 ADC and UART\DelSig_I2CM02.cydsn\DelSig_I2CM02.cyprj|d52a432d-84c6-4116-8ee1-0b558b136041
+C:\Users\Monica P\Desktop\Assignment\CE95277 ADC and UART\DelSig_I2CM_Test02.cydsn\DelSig_I2CM_Test02.cyprj|57e09e44-d7aa-4354-888b-e4a51987ce17

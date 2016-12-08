@@ -1,0 +1,1117 @@
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"Sample_Hold_1.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.global	Sample_Hold_1_initVar
+  19              		.bss
+  20              		.type	Sample_Hold_1_initVar, %object
+  21              		.size	Sample_Hold_1_initVar, 1
+  22              	Sample_Hold_1_initVar:
+  23 0000 00       		.space	1
+  24              		.section	.text.Sample_Hold_1_Init,"ax",%progbits
+  25              		.align	2
+  26              		.global	Sample_Hold_1_Init
+  27              		.thumb
+  28              		.thumb_func
+  29              		.type	Sample_Hold_1_Init, %function
+  30              	Sample_Hold_1_Init:
+  31              	.LFB0:
+  32              		.file 1 ".\\Generated_Source\\PSoC5\\Sample_Hold_1.c"
+   1:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * File Name: Sample_Hold_1.c
+   3:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Version 1.40
+   4:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+   5:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Description:
+   6:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  This file provides the source code to the API for the SAMPLE/TRACK AND HOLD 
+   7:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  component.
+   8:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+   9:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Note:
+  10:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  None
+  11:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+  12:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Copyright 2008-2012, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * You may use this file only in accordance with the license, terms, conditions, 
+  15:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * disclaimers, and limitations in the end user license agreement accompanying 
+  16:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  19:.\Generated_Source\PSoC5/Sample_Hold_1.c **** #include "Sample_Hold_1.h"
+  20:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  21:.\Generated_Source\PSoC5/Sample_Hold_1.c **** #if (!CY_PSOC5A)
+  22:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (CYDEV_VARIABLE_VDDA == 1u)
+  23:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #include "CyScBoostClk.h"
+  24:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* (CYDEV_VARIABLE_VDDA == 1u) */
+  25:.\Generated_Source\PSoC5/Sample_Hold_1.c **** #endif /* (!CY_PSOC5A) */
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 2
+
+
+  26:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  27:.\Generated_Source\PSoC5/Sample_Hold_1.c **** uint8 Sample_Hold_1_initVar = 0u;
+  28:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  29:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /* static Sample_Hold_1_backupStruct  Sample_Hold_1_backup; */
+  30:.\Generated_Source\PSoC5/Sample_Hold_1.c **** #if (CY_PSOC5A)
+  31:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     static Sample_Hold_1_backupStruct  Sample_Hold_1_P5backup;
+  32:.\Generated_Source\PSoC5/Sample_Hold_1.c **** #endif /* CY_PSOC5A */
+  33:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  34:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  35:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+  36:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************   
+  37:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Function Name: Sample_Hold_1_Init
+  38:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+  39:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+  40:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Summary:
+  41:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  Initialize component's parameters to the parameters set by user in the 
+  42:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  customizer of the component placed onto schematic. Usually called in 
+  43:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  Sample_Hold_1_Start().
+  44:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+  45:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Parameters:
+  46:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+  47:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+  48:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Return:
+  49:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+  50:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+  51:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+  52:.\Generated_Source\PSoC5/Sample_Hold_1.c **** void Sample_Hold_1_Init(void) 
+  53:.\Generated_Source\PSoC5/Sample_Hold_1.c **** {   
+  33              		.loc 1 53 0
+  34              		.cfi_startproc
+  35              		@ args = 0, pretend = 0, frame = 0
+  36              		@ frame_needed = 1, uses_anonymous_args = 0
+  37 0000 80B5     		push	{r7, lr}
+  38              		.cfi_def_cfa_offset 8
+  39              		.cfi_offset 7, -8
+  40              		.cfi_offset 14, -4
+  41 0002 00AF     		add	r7, sp, #0
+  42              		.cfi_def_cfa_register 7
+  54:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Configure SC Block based on selected Sample/Track type */
+  55:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (Sample_Hold_1_SAMPLE_TRACK_MODE == Sample_Hold_1_SAMPLEANDHOLD) /* Sample and hold mode */
+  56:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* SC Block mode -  - SCxx_CR0[3:1] */
+  57:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR0_REG = Sample_Hold_1_MODE_SAMPLEANDHOLD;
+  43              		.loc 1 57 0
+  44 0004 0E4B     		ldr	r3, .L2
+  45 0006 0622     		movs	r2, #6
+  46 0008 1A70     		strb	r2, [r3]
+  58:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         
+  59:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* SC Block CR1 */ 
+  60:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR1_REG = (Sample_Hold_1_COMP_4P35PF  |
+  47              		.loc 1 60 0
+  48 000a 0E4B     		ldr	r3, .L2+4
+  49 000c 0822     		movs	r2, #8
+  50 000e 1A70     		strb	r2, [r3]
+  61:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                 Sample_Hold_1_GAIN_0DB);
+  62:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #if(Sample_Hold_1_SAMPLE_CLOCK_EDGE == Sample_Hold_1_EDGE_POSITIVENEGATIVE)
+  63:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR1_REG =  Sample_Hold_1_CR1_REG  | Sample_Hold_1_DIV2_DISABLE ;
+  64:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #else
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 3
+
+
+  65:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR1_REG =  Sample_Hold_1_CR1_REG  | Sample_Hold_1_DIV2_ENABLE ;
+  51              		.loc 1 65 0
+  52 0010 0C4B     		ldr	r3, .L2+4
+  53 0012 0C4A     		ldr	r2, .L2+4
+  54 0014 1278     		ldrb	r2, [r2]
+  55 0016 D2B2     		uxtb	r2, r2
+  56 0018 42F01002 		orr	r2, r2, #16
+  57 001c D2B2     		uxtb	r2, r2
+  58 001e 1A70     		strb	r2, [r3]
+  66:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #endif
+  67:.\Generated_Source\PSoC5/Sample_Hold_1.c ****          
+  68:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #if(Sample_Hold_1_VREF_TYPE == Sample_Hold_1_EXTERNAL)
+  69:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR2_REG = Sample_Hold_1_BIAS_LOW |
+  70:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                        Sample_Hold_1_REDC_00 | 
+  71:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                        Sample_Hold_1_GNDVREF_DI;
+  72:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #else
+  73:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR2_REG = Sample_Hold_1_BIAS_LOW |
+  59              		.loc 1 73 0
+  60 0020 094B     		ldr	r3, .L2+8
+  61 0022 8122     		movs	r2, #129
+  62 0024 1A70     		strb	r2, [r3]
+  74:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                        Sample_Hold_1_REDC_00 | 
+  75:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                        Sample_Hold_1_GNDVREF_E;
+  76:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #endif
+  77:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #else
+  78:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* Track and Hold Mode */
+  79:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* SC Block mode -  - SCxx_CR0[3:1] */
+  80:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR0_REG = Sample_Hold_1_MODE_TRACKANDHOLD; 
+  81:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         
+  82:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* SC Block CR1 */ 
+  83:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR1_REG = Sample_Hold_1_COMP_4P35PF  |
+  84:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                    Sample_Hold_1_DIV2_ENABLE |
+  85:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                    Sample_Hold_1_GAIN_0DB;
+  86:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                 
+  87:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         /* SC Block CR2 */
+  88:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR2_REG = Sample_Hold_1_BIAS_LOW |
+  89:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                    Sample_Hold_1_REDC_00 |
+  90:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                                    Sample_Hold_1_GNDVREF_E;
+  91:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* end if - Sample/Track Type */
+  92:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+  93:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Enable SC Block clocking */
+  94:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_CLK_REG |= Sample_Hold_1_CLK_EN;
+  63              		.loc 1 94 0
+  64 0026 094B     		ldr	r3, .L2+12
+  65 0028 084A     		ldr	r2, .L2+12
+  66 002a 1278     		ldrb	r2, [r2]
+  67 002c D2B2     		uxtb	r2, r2
+  68 002e 42F00802 		orr	r2, r2, #8
+  69 0032 D2B2     		uxtb	r2, r2
+  70 0034 1A70     		strb	r2, [r3]
+  95:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+  96:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Set default power */
+  97:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_SetPower(Sample_Hold_1_INIT_POWER);
+  71              		.loc 1 97 0
+  72 0036 0220     		movs	r0, #2
+  73 0038 FFF7FEFF 		bl	Sample_Hold_1_SetPower
+  98:.\Generated_Source\PSoC5/Sample_Hold_1.c **** }
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 4
+
+
+  74              		.loc 1 98 0
+  75 003c 80BD     		pop	{r7, pc}
+  76              	.L3:
+  77 003e 00BF     		.align	2
+  78              	.L2:
+  79 0040 00580040 		.word	1073764352
+  80 0044 01580040 		.word	1073764353
+  81 0048 02580040 		.word	1073764354
+  82 004c 0B5A0040 		.word	1073764875
+  83              		.cfi_endproc
+  84              	.LFE0:
+  85              		.size	Sample_Hold_1_Init, .-Sample_Hold_1_Init
+  86              		.section	.text.Sample_Hold_1_Enable,"ax",%progbits
+  87              		.align	2
+  88              		.global	Sample_Hold_1_Enable
+  89              		.thumb
+  90              		.thumb_func
+  91              		.type	Sample_Hold_1_Enable, %function
+  92              	Sample_Hold_1_Enable:
+  93              	.LFB1:
+  99:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 100:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 101:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************   
+ 102:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Function Name: Sample_Hold_1_Enable
+ 103:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+ 104:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 105:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Summary:
+ 106:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  Enables the Sample/Track and Hold block operation
+ 107:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 108:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Parameters:
+ 109:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 110:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 111:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Return:
+ 112:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 113:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 114:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+ 115:.\Generated_Source\PSoC5/Sample_Hold_1.c **** void Sample_Hold_1_Enable(void) 
+ 116:.\Generated_Source\PSoC5/Sample_Hold_1.c **** {
+  94              		.loc 1 116 0
+  95              		.cfi_startproc
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 1, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 80B4     		push	{r7}
+ 100              		.cfi_def_cfa_offset 4
+ 101              		.cfi_offset 7, -4
+ 102 0002 00AF     		add	r7, sp, #0
+ 103              		.cfi_def_cfa_register 7
+ 117:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* This is to restore the value of register CR1 and CR2 which is saved 
+ 118:.\Generated_Source\PSoC5/Sample_Hold_1.c ****       in prior to the modifications in stop() API */
+ 119:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (CY_PSOC5A)
+ 120:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         if(Sample_Hold_1_P5backup.enableState == 1u)
+ 121:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         {
+ 122:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR1_REG = Sample_Hold_1_P5backup.scCR1Reg;
+ 123:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_CR2_REG = Sample_Hold_1_P5backup.scCR2Reg;
+ 124:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_P5backup.enableState = 0u;
+ 125:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         }
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 5
+
+
+ 126:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* CY_PSOC5A */
+ 127:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+ 128:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Enable power to SC block in active mode */
+ 129:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_PM_ACT_CFG_REG |= Sample_Hold_1_ACT_PWR_EN;
+ 104              		.loc 1 129 0
+ 105 0004 0D4B     		ldr	r3, .L5
+ 106 0006 0D4A     		ldr	r2, .L5
+ 107 0008 1278     		ldrb	r2, [r2]
+ 108 000a D2B2     		uxtb	r2, r2
+ 109 000c 42F00102 		orr	r2, r2, #1
+ 110 0010 D2B2     		uxtb	r2, r2
+ 111 0012 1A70     		strb	r2, [r3]
+ 130:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+ 131:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Enable power to SC block in Alternative active mode */
+ 132:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_PM_STBY_CFG_REG |= Sample_Hold_1_STBY_PWR_EN;
+ 112              		.loc 1 132 0
+ 113 0014 0A4B     		ldr	r3, .L5+4
+ 114 0016 0A4A     		ldr	r2, .L5+4
+ 115 0018 1278     		ldrb	r2, [r2]
+ 116 001a D2B2     		uxtb	r2, r2
+ 117 001c 42F00102 		orr	r2, r2, #1
+ 118 0020 D2B2     		uxtb	r2, r2
+ 119 0022 1A70     		strb	r2, [r3]
+ 133:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 134:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_PUMP_CR1_REG |= Sample_Hold_1_PUMP_CR1_SC_CLKSEL;
+ 120              		.loc 1 134 0
+ 121 0024 074B     		ldr	r3, .L5+8
+ 122 0026 074A     		ldr	r2, .L5+8
+ 123 0028 1278     		ldrb	r2, [r2]
+ 124 002a D2B2     		uxtb	r2, r2
+ 125 002c 62F07F02 		orn	r2, r2, #127
+ 126 0030 D2B2     		uxtb	r2, r2
+ 127 0032 1A70     		strb	r2, [r3]
+ 135:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+ 136:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (!CY_PSOC5A)
+ 137:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #if (CYDEV_VARIABLE_VDDA == 1u)
+ 138:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             if(CyScPumpEnabled == 1u)
+ 139:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             {
+ 140:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_BSTCLK_REG &= (uint8)(~Sample_Hold_1_BST_CLK_INDEX_MASK);
+ 141:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_BSTCLK_REG |= Sample_Hold_1_BST_CLK_EN | CyScBoostClk__INDEX;
+ 142:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_SC_MISC_REG |= Sample_Hold_1_PUMP_FORCE;
+ 143:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 CyScBoostClk_Start();
+ 144:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             }
+ 145:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             else
+ 146:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             {
+ 147:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_BSTCLK_REG &= (uint8)(~Sample_Hold_1_BST_CLK_EN);
+ 148:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_SC_MISC_REG &= (uint8)(~Sample_Hold_1_PUMP_FORCE);
+ 149:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             }
+ 150:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #endif /* (CYDEV_VARIABLE_VDDA == 1u) */
+ 151:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* (!CY_PSOC5A) */
+ 152:.\Generated_Source\PSoC5/Sample_Hold_1.c **** }
+ 128              		.loc 1 152 0
+ 129 0034 BD46     		mov	sp, r7
+ 130              		@ sp needed
+ 131 0036 5DF8047B 		ldr	r7, [sp], #4
+ 132 003a 7047     		bx	lr
+ 133              	.L6:
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 6
+
+
+ 134              		.align	2
+ 135              	.L5:
+ 136 003c A9430040 		.word	1073759145
+ 137 0040 B9430040 		.word	1073759161
+ 138 0044 77580040 		.word	1073764471
+ 139              		.cfi_endproc
+ 140              	.LFE1:
+ 141              		.size	Sample_Hold_1_Enable, .-Sample_Hold_1_Enable
+ 142              		.section	.text.Sample_Hold_1_Start,"ax",%progbits
+ 143              		.align	2
+ 144              		.global	Sample_Hold_1_Start
+ 145              		.thumb
+ 146              		.thumb_func
+ 147              		.type	Sample_Hold_1_Start, %function
+ 148              	Sample_Hold_1_Start:
+ 149              	.LFB2:
+ 153:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 154:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 155:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************
+ 156:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Function Name: Sample_Hold_1_Start
+ 157:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+ 158:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 159:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Summary:
+ 160:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  The start function initializes the Sample and Hold with the default values, 
+ 161:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  and sets the power to the given level.  A power level of 0, is the same as 
+ 162:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  executing the stop function.
+ 163:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 164:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Parameters:
+ 165:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 166:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 167:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Return:
+ 168:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 169:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 170:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+ 171:.\Generated_Source\PSoC5/Sample_Hold_1.c **** void Sample_Hold_1_Start(void) 
+ 172:.\Generated_Source\PSoC5/Sample_Hold_1.c **** {
+ 150              		.loc 1 172 0
+ 151              		.cfi_startproc
+ 152              		@ args = 0, pretend = 0, frame = 0
+ 153              		@ frame_needed = 1, uses_anonymous_args = 0
+ 154 0000 80B5     		push	{r7, lr}
+ 155              		.cfi_def_cfa_offset 8
+ 156              		.cfi_offset 7, -8
+ 157              		.cfi_offset 14, -4
+ 158 0002 00AF     		add	r7, sp, #0
+ 159              		.cfi_def_cfa_register 7
+ 173:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* If not Initialized then initialize all required hardware and software */
+ 174:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     if(Sample_Hold_1_initVar == 0u)
+ 160              		.loc 1 174 0
+ 161 0004 054B     		ldr	r3, .L9
+ 162 0006 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 163 0008 002B     		cmp	r3, #0
+ 164 000a 04D1     		bne	.L8
+ 175:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     {
+ 176:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_Init();
+ 165              		.loc 1 176 0
+ 166 000c FFF7FEFF 		bl	Sample_Hold_1_Init
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 7
+
+
+ 177:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_initVar = 1u;
+ 167              		.loc 1 177 0
+ 168 0010 024B     		ldr	r3, .L9
+ 169 0012 0122     		movs	r2, #1
+ 170 0014 1A70     		strb	r2, [r3]
+ 171              	.L8:
+ 178:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     }
+ 179:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_Enable();
+ 172              		.loc 1 179 0
+ 173 0016 FFF7FEFF 		bl	Sample_Hold_1_Enable
+ 180:.\Generated_Source\PSoC5/Sample_Hold_1.c **** }
+ 174              		.loc 1 180 0
+ 175 001a 80BD     		pop	{r7, pc}
+ 176              	.L10:
+ 177              		.align	2
+ 178              	.L9:
+ 179 001c 00000000 		.word	Sample_Hold_1_initVar
+ 180              		.cfi_endproc
+ 181              	.LFE2:
+ 182              		.size	Sample_Hold_1_Start, .-Sample_Hold_1_Start
+ 183              		.section	.text.Sample_Hold_1_Stop,"ax",%progbits
+ 184              		.align	2
+ 185              		.global	Sample_Hold_1_Stop
+ 186              		.thumb
+ 187              		.thumb_func
+ 188              		.type	Sample_Hold_1_Stop, %function
+ 189              	Sample_Hold_1_Stop:
+ 190              	.LFB3:
+ 181:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 182:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 183:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************
+ 184:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Function Name: Sample_Hold_1_Stop
+ 185:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+ 186:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 187:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Summary:
+ 188:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  Powers down amplifier to lowest power state.
+ 189:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 190:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Parameters:
+ 191:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 192:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 193:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Return:
+ 194:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 195:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 196:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+ 197:.\Generated_Source\PSoC5/Sample_Hold_1.c **** void Sample_Hold_1_Stop(void) 
+ 198:.\Generated_Source\PSoC5/Sample_Hold_1.c **** {   
+ 191              		.loc 1 198 0
+ 192              		.cfi_startproc
+ 193              		@ args = 0, pretend = 0, frame = 0
+ 194              		@ frame_needed = 1, uses_anonymous_args = 0
+ 195              		@ link register save eliminated.
+ 196 0000 80B4     		push	{r7}
+ 197              		.cfi_def_cfa_offset 4
+ 198              		.cfi_offset 7, -4
+ 199 0002 00AF     		add	r7, sp, #0
+ 200              		.cfi_def_cfa_register 7
+ 199:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Disble power to the Amp in Active mode template */
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 8
+
+
+ 200:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_PM_ACT_CFG_REG &= (uint8)(~Sample_Hold_1_ACT_PWR_EN);
+ 201              		.loc 1 200 0
+ 202 0004 094B     		ldr	r3, .L12
+ 203 0006 094A     		ldr	r2, .L12
+ 204 0008 1278     		ldrb	r2, [r2]
+ 205 000a D2B2     		uxtb	r2, r2
+ 206 000c 22F00102 		bic	r2, r2, #1
+ 207 0010 D2B2     		uxtb	r2, r2
+ 208 0012 1A70     		strb	r2, [r3]
+ 201:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 202:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Disble power to the Amp in Alternative Active mode template */
+ 203:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_PM_STBY_CFG_REG &= (uint8)(~Sample_Hold_1_STBY_PWR_EN);
+ 209              		.loc 1 203 0
+ 210 0014 064B     		ldr	r3, .L12+4
+ 211 0016 064A     		ldr	r2, .L12+4
+ 212 0018 1278     		ldrb	r2, [r2]
+ 213 001a D2B2     		uxtb	r2, r2
+ 214 001c 22F00102 		bic	r2, r2, #1
+ 215 0020 D2B2     		uxtb	r2, r2
+ 216 0022 1A70     		strb	r2, [r3]
+ 204:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     
+ 205:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (!CY_PSOC5A)
+ 206:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #if (CYDEV_VARIABLE_VDDA == 1u)
+ 207:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             Sample_Hold_1_BSTCLK_REG &= (uint8)(~Sample_Hold_1_BST_CLK_EN);
+ 208:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             /* Disable pumps only if there aren't any SC block in use */
+ 209:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             if ((Sample_Hold_1_PM_ACT_CFG_REG & Sample_Hold_1_PM_ACT_CFG_MASK) == 0u)
+ 210:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             {
+ 211:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_SC_MISC_REG &= (uint8)(~Sample_Hold_1_PUMP_FORCE);
+ 212:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 Sample_Hold_1_PUMP_CR1_REG &= (uint8)(~Sample_Hold_1_PUMP_CR1_SC_CLKSEL);
+ 213:.\Generated_Source\PSoC5/Sample_Hold_1.c ****                 CyScBoostClk_Stop();
+ 214:.\Generated_Source\PSoC5/Sample_Hold_1.c ****             }
+ 215:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         #endif /* CYDEV_VARIABLE_VDDA == 1u */
+ 216:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* (CY_PSOC3 || CY_PSOC5LP) */
+ 217:.\Generated_Source\PSoC5/Sample_Hold_1.c ****  
+ 218:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* This sets Sample and hold in zero current mode and output routes are valid */
+ 219:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #if (CY_PSOC5A)
+ 220:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_P5backup.scCR1Reg = Sample_Hold_1_CR1_REG;
+ 221:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_P5backup.scCR2Reg = Sample_Hold_1_CR2_REG;
+ 222:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR1_REG = 0x00u;
+ 223:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_CR2_REG = 0x00u;
+ 224:.\Generated_Source\PSoC5/Sample_Hold_1.c ****         Sample_Hold_1_P5backup.enableState = 1u;
+ 225:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     #endif /* CY_PSOC5A */
+ 226:.\Generated_Source\PSoC5/Sample_Hold_1.c **** }
+ 217              		.loc 1 226 0
+ 218 0024 BD46     		mov	sp, r7
+ 219              		@ sp needed
+ 220 0026 5DF8047B 		ldr	r7, [sp], #4
+ 221 002a 7047     		bx	lr
+ 222              	.L13:
+ 223              		.align	2
+ 224              	.L12:
+ 225 002c A9430040 		.word	1073759145
+ 226 0030 B9430040 		.word	1073759161
+ 227              		.cfi_endproc
+ 228              	.LFE3:
+ 229              		.size	Sample_Hold_1_Stop, .-Sample_Hold_1_Stop
+ 230              		.section	.text.Sample_Hold_1_SetPower,"ax",%progbits
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 9
+
+
+ 231              		.align	2
+ 232              		.global	Sample_Hold_1_SetPower
+ 233              		.thumb
+ 234              		.thumb_func
+ 235              		.type	Sample_Hold_1_SetPower, %function
+ 236              	Sample_Hold_1_SetPower:
+ 237              	.LFB4:
+ 227:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 228:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 229:.\Generated_Source\PSoC5/Sample_Hold_1.c **** /*******************************************************************************
+ 230:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Function Name: Sample_Hold_1_SetPower
+ 231:.\Generated_Source\PSoC5/Sample_Hold_1.c **** ********************************************************************************
+ 232:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 233:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Summary:
+ 234:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  Set the power of the Sample/Track and Hold.
+ 235:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 236:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Parameters:
+ 237:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  power: Sets power level between (0) and (3) high power
+ 238:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 239:.\Generated_Source\PSoC5/Sample_Hold_1.c **** * Return:
+ 240:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *  void
+ 241:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *
+ 242:.\Generated_Source\PSoC5/Sample_Hold_1.c **** *******************************************************************************/
+ 243:.\Generated_Source\PSoC5/Sample_Hold_1.c **** void Sample_Hold_1_SetPower(uint8 power) 
+ 244:.\Generated_Source\PSoC5/Sample_Hold_1.c **** {
+ 238              		.loc 1 244 0
+ 239              		.cfi_startproc
+ 240              		@ args = 0, pretend = 0, frame = 16
+ 241              		@ frame_needed = 1, uses_anonymous_args = 0
+ 242              		@ link register save eliminated.
+ 243 0000 80B4     		push	{r7}
+ 244              		.cfi_def_cfa_offset 4
+ 245              		.cfi_offset 7, -4
+ 246 0002 85B0     		sub	sp, sp, #20
+ 247              		.cfi_def_cfa_offset 24
+ 248 0004 00AF     		add	r7, sp, #0
+ 249              		.cfi_def_cfa_register 7
+ 250 0006 0346     		mov	r3, r0
+ 251 0008 FB71     		strb	r3, [r7, #7]
+ 245:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     uint8 tmpCR;
+ 246:.\Generated_Source\PSoC5/Sample_Hold_1.c **** 
+ 247:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     /* Sets drive bits in SC Block Control Register 1:  SCxx_CR[1:0] */
+ 248:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     tmpCR = Sample_Hold_1_CR1_REG & (uint8)(~Sample_Hold_1_DRIVE_MASK);
+ 252              		.loc 1 248 0
+ 253 000a 0A4B     		ldr	r3, .L15
+ 254 000c 1B78     		ldrb	r3, [r3]
+ 255 000e DBB2     		uxtb	r3, r3
+ 256 0010 23F00303 		bic	r3, r3, #3
+ 257 0014 FB73     		strb	r3, [r7, #15]
+ 249:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     tmpCR |= (power & Sample_Hold_1_DRIVE_MASK);
+ 258              		.loc 1 249 0
+ 259 0016 FB79     		ldrb	r3, [r7, #7]
+ 260 0018 03F00303 		and	r3, r3, #3
+ 261 001c DAB2     		uxtb	r2, r3
+ 262 001e FB7B     		ldrb	r3, [r7, #15]
+ 263 0020 1343     		orrs	r3, r3, r2
+ 264 0022 FB73     		strb	r3, [r7, #15]
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 10
+
+
+ 250:.\Generated_Source\PSoC5/Sample_Hold_1.c ****     Sample_Hold_1_CR1_REG = tmpCR;
+ 265              		.loc 1 250 0
+ 266 0024 034B     		ldr	r3, .L15
+ 267 0026 FA7B     		ldrb	r2, [r7, #15]
+ 268 0028 1A70     		strb	r2, [r3]
+ 251:.\Generated_Source\PSoC5/Sample_Hold_1.c **** }
+ 269              		.loc 1 251 0
+ 270 002a 1437     		adds	r7, r7, #20
+ 271 002c BD46     		mov	sp, r7
+ 272              		@ sp needed
+ 273 002e 5DF8047B 		ldr	r7, [sp], #4
+ 274 0032 7047     		bx	lr
+ 275              	.L16:
+ 276              		.align	2
+ 277              	.L15:
+ 278 0034 01580040 		.word	1073764353
+ 279              		.cfi_endproc
+ 280              	.LFE4:
+ 281              		.size	Sample_Hold_1_SetPower, .-Sample_Hold_1_SetPower
+ 282              		.text
+ 283              	.Letext0:
+ 284              		.file 2 ".\\Generated_Source\\PSoC5\\cytypes.h"
+ 285              		.section	.debug_info,"",%progbits
+ 286              	.Ldebug_info0:
+ 287 0000 27010000 		.4byte	0x127
+ 288 0004 0400     		.2byte	0x4
+ 289 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 290 000a 04       		.byte	0x4
+ 291 000b 01       		.uleb128 0x1
+ 292 000c 94010000 		.4byte	.LASF19
+ 293 0010 01       		.byte	0x1
+ 294 0011 B6000000 		.4byte	.LASF20
+ 295 0015 25010000 		.4byte	.LASF21
+ 296 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 297 001d 00000000 		.4byte	0
+ 298 0021 00000000 		.4byte	.Ldebug_line0
+ 299 0025 02       		.uleb128 0x2
+ 300 0026 01       		.byte	0x1
+ 301 0027 06       		.byte	0x6
+ 302 0028 19010000 		.4byte	.LASF0
+ 303 002c 02       		.uleb128 0x2
+ 304 002d 01       		.byte	0x1
+ 305 002e 08       		.byte	0x8
+ 306 002f 8E000000 		.4byte	.LASF1
+ 307 0033 02       		.uleb128 0x2
+ 308 0034 02       		.byte	0x2
+ 309 0035 05       		.byte	0x5
+ 310 0036 8A010000 		.4byte	.LASF2
+ 311 003a 02       		.uleb128 0x2
+ 312 003b 02       		.byte	0x2
+ 313 003c 07       		.byte	0x7
+ 314 003d 06010000 		.4byte	.LASF3
+ 315 0041 02       		.uleb128 0x2
+ 316 0042 04       		.byte	0x4
+ 317 0043 05       		.byte	0x5
+ 318 0044 A1000000 		.4byte	.LASF4
+ 319 0048 02       		.uleb128 0x2
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 11
+
+
+ 320 0049 04       		.byte	0x4
+ 321 004a 07       		.byte	0x7
+ 322 004b 5F000000 		.4byte	.LASF5
+ 323 004f 02       		.uleb128 0x2
+ 324 0050 08       		.byte	0x8
+ 325 0051 05       		.byte	0x5
+ 326 0052 00000000 		.4byte	.LASF6
+ 327 0056 02       		.uleb128 0x2
+ 328 0057 08       		.byte	0x8
+ 329 0058 07       		.byte	0x7
+ 330 0059 71000000 		.4byte	.LASF7
+ 331 005d 03       		.uleb128 0x3
+ 332 005e 04       		.byte	0x4
+ 333 005f 05       		.byte	0x5
+ 334 0060 696E7400 		.ascii	"int\000"
+ 335 0064 02       		.uleb128 0x2
+ 336 0065 04       		.byte	0x4
+ 337 0066 07       		.byte	0x7
+ 338 0067 0E000000 		.4byte	.LASF8
+ 339 006b 04       		.uleb128 0x4
+ 340 006c 59000000 		.4byte	.LASF12
+ 341 0070 02       		.byte	0x2
+ 342 0071 A1       		.byte	0xa1
+ 343 0072 2C000000 		.4byte	0x2c
+ 344 0076 02       		.uleb128 0x2
+ 345 0077 04       		.byte	0x4
+ 346 0078 04       		.byte	0x4
+ 347 0079 88000000 		.4byte	.LASF9
+ 348 007d 02       		.uleb128 0x2
+ 349 007e 08       		.byte	0x8
+ 350 007f 04       		.byte	0x4
+ 351 0080 AF000000 		.4byte	.LASF10
+ 352 0084 02       		.uleb128 0x2
+ 353 0085 01       		.byte	0x1
+ 354 0086 08       		.byte	0x8
+ 355 0087 9C000000 		.4byte	.LASF11
+ 356 008b 05       		.uleb128 0x5
+ 357 008c AA000000 		.4byte	.LASF13
+ 358 0090 02       		.byte	0x2
+ 359 0091 4B01     		.2byte	0x14b
+ 360 0093 97000000 		.4byte	0x97
+ 361 0097 06       		.uleb128 0x6
+ 362 0098 6B000000 		.4byte	0x6b
+ 363 009c 02       		.uleb128 0x2
+ 364 009d 04       		.byte	0x4
+ 365 009e 07       		.byte	0x7
+ 366 009f 81010000 		.4byte	.LASF14
+ 367 00a3 07       		.uleb128 0x7
+ 368 00a4 DF000000 		.4byte	.LASF15
+ 369 00a8 01       		.byte	0x1
+ 370 00a9 34       		.byte	0x34
+ 371 00aa 00000000 		.4byte	.LFB0
+ 372 00ae 50000000 		.4byte	.LFE0-.LFB0
+ 373 00b2 01       		.uleb128 0x1
+ 374 00b3 9C       		.byte	0x9c
+ 375 00b4 08       		.uleb128 0x8
+ 376 00b5 44000000 		.4byte	.LASF16
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 12
+
+
+ 377 00b9 01       		.byte	0x1
+ 378 00ba 73       		.byte	0x73
+ 379 00bb 00000000 		.4byte	.LFB1
+ 380 00bf 48000000 		.4byte	.LFE1-.LFB1
+ 381 00c3 01       		.uleb128 0x1
+ 382 00c4 9C       		.byte	0x9c
+ 383 00c5 07       		.uleb128 0x7
+ 384 00c6 F2000000 		.4byte	.LASF17
+ 385 00ca 01       		.byte	0x1
+ 386 00cb AB       		.byte	0xab
+ 387 00cc 00000000 		.4byte	.LFB2
+ 388 00d0 20000000 		.4byte	.LFE2-.LFB2
+ 389 00d4 01       		.uleb128 0x1
+ 390 00d5 9C       		.byte	0x9c
+ 391 00d6 08       		.uleb128 0x8
+ 392 00d7 1B000000 		.4byte	.LASF18
+ 393 00db 01       		.byte	0x1
+ 394 00dc C5       		.byte	0xc5
+ 395 00dd 00000000 		.4byte	.LFB3
+ 396 00e1 34000000 		.4byte	.LFE3-.LFB3
+ 397 00e5 01       		.uleb128 0x1
+ 398 00e6 9C       		.byte	0x9c
+ 399 00e7 09       		.uleb128 0x9
+ 400 00e8 10020000 		.4byte	.LASF22
+ 401 00ec 01       		.byte	0x1
+ 402 00ed F3       		.byte	0xf3
+ 403 00ee 00000000 		.4byte	.LFB4
+ 404 00f2 38000000 		.4byte	.LFE4-.LFB4
+ 405 00f6 01       		.uleb128 0x1
+ 406 00f7 9C       		.byte	0x9c
+ 407 00f8 19010000 		.4byte	0x119
+ 408 00fc 0A       		.uleb128 0xa
+ 409 00fd 2D020000 		.4byte	.LASF23
+ 410 0101 01       		.byte	0x1
+ 411 0102 F3       		.byte	0xf3
+ 412 0103 6B000000 		.4byte	0x6b
+ 413 0107 02       		.uleb128 0x2
+ 414 0108 91       		.byte	0x91
+ 415 0109 6F       		.sleb128 -17
+ 416 010a 0B       		.uleb128 0xb
+ 417 010b 27020000 		.4byte	.LASF24
+ 418 010f 01       		.byte	0x1
+ 419 0110 F5       		.byte	0xf5
+ 420 0111 6B000000 		.4byte	0x6b
+ 421 0115 02       		.uleb128 0x2
+ 422 0116 91       		.byte	0x91
+ 423 0117 77       		.sleb128 -9
+ 424 0118 00       		.byte	0
+ 425 0119 0C       		.uleb128 0xc
+ 426 011a 2E000000 		.4byte	.LASF25
+ 427 011e 01       		.byte	0x1
+ 428 011f 1B       		.byte	0x1b
+ 429 0120 6B000000 		.4byte	0x6b
+ 430 0124 05       		.uleb128 0x5
+ 431 0125 03       		.byte	0x3
+ 432 0126 00000000 		.4byte	Sample_Hold_1_initVar
+ 433 012a 00       		.byte	0
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 13
+
+
+ 434              		.section	.debug_abbrev,"",%progbits
+ 435              	.Ldebug_abbrev0:
+ 436 0000 01       		.uleb128 0x1
+ 437 0001 11       		.uleb128 0x11
+ 438 0002 01       		.byte	0x1
+ 439 0003 25       		.uleb128 0x25
+ 440 0004 0E       		.uleb128 0xe
+ 441 0005 13       		.uleb128 0x13
+ 442 0006 0B       		.uleb128 0xb
+ 443 0007 03       		.uleb128 0x3
+ 444 0008 0E       		.uleb128 0xe
+ 445 0009 1B       		.uleb128 0x1b
+ 446 000a 0E       		.uleb128 0xe
+ 447 000b 55       		.uleb128 0x55
+ 448 000c 17       		.uleb128 0x17
+ 449 000d 11       		.uleb128 0x11
+ 450 000e 01       		.uleb128 0x1
+ 451 000f 10       		.uleb128 0x10
+ 452 0010 17       		.uleb128 0x17
+ 453 0011 00       		.byte	0
+ 454 0012 00       		.byte	0
+ 455 0013 02       		.uleb128 0x2
+ 456 0014 24       		.uleb128 0x24
+ 457 0015 00       		.byte	0
+ 458 0016 0B       		.uleb128 0xb
+ 459 0017 0B       		.uleb128 0xb
+ 460 0018 3E       		.uleb128 0x3e
+ 461 0019 0B       		.uleb128 0xb
+ 462 001a 03       		.uleb128 0x3
+ 463 001b 0E       		.uleb128 0xe
+ 464 001c 00       		.byte	0
+ 465 001d 00       		.byte	0
+ 466 001e 03       		.uleb128 0x3
+ 467 001f 24       		.uleb128 0x24
+ 468 0020 00       		.byte	0
+ 469 0021 0B       		.uleb128 0xb
+ 470 0022 0B       		.uleb128 0xb
+ 471 0023 3E       		.uleb128 0x3e
+ 472 0024 0B       		.uleb128 0xb
+ 473 0025 03       		.uleb128 0x3
+ 474 0026 08       		.uleb128 0x8
+ 475 0027 00       		.byte	0
+ 476 0028 00       		.byte	0
+ 477 0029 04       		.uleb128 0x4
+ 478 002a 16       		.uleb128 0x16
+ 479 002b 00       		.byte	0
+ 480 002c 03       		.uleb128 0x3
+ 481 002d 0E       		.uleb128 0xe
+ 482 002e 3A       		.uleb128 0x3a
+ 483 002f 0B       		.uleb128 0xb
+ 484 0030 3B       		.uleb128 0x3b
+ 485 0031 0B       		.uleb128 0xb
+ 486 0032 49       		.uleb128 0x49
+ 487 0033 13       		.uleb128 0x13
+ 488 0034 00       		.byte	0
+ 489 0035 00       		.byte	0
+ 490 0036 05       		.uleb128 0x5
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 14
+
+
+ 491 0037 16       		.uleb128 0x16
+ 492 0038 00       		.byte	0
+ 493 0039 03       		.uleb128 0x3
+ 494 003a 0E       		.uleb128 0xe
+ 495 003b 3A       		.uleb128 0x3a
+ 496 003c 0B       		.uleb128 0xb
+ 497 003d 3B       		.uleb128 0x3b
+ 498 003e 05       		.uleb128 0x5
+ 499 003f 49       		.uleb128 0x49
+ 500 0040 13       		.uleb128 0x13
+ 501 0041 00       		.byte	0
+ 502 0042 00       		.byte	0
+ 503 0043 06       		.uleb128 0x6
+ 504 0044 35       		.uleb128 0x35
+ 505 0045 00       		.byte	0
+ 506 0046 49       		.uleb128 0x49
+ 507 0047 13       		.uleb128 0x13
+ 508 0048 00       		.byte	0
+ 509 0049 00       		.byte	0
+ 510 004a 07       		.uleb128 0x7
+ 511 004b 2E       		.uleb128 0x2e
+ 512 004c 00       		.byte	0
+ 513 004d 3F       		.uleb128 0x3f
+ 514 004e 19       		.uleb128 0x19
+ 515 004f 03       		.uleb128 0x3
+ 516 0050 0E       		.uleb128 0xe
+ 517 0051 3A       		.uleb128 0x3a
+ 518 0052 0B       		.uleb128 0xb
+ 519 0053 3B       		.uleb128 0x3b
+ 520 0054 0B       		.uleb128 0xb
+ 521 0055 27       		.uleb128 0x27
+ 522 0056 19       		.uleb128 0x19
+ 523 0057 11       		.uleb128 0x11
+ 524 0058 01       		.uleb128 0x1
+ 525 0059 12       		.uleb128 0x12
+ 526 005a 06       		.uleb128 0x6
+ 527 005b 40       		.uleb128 0x40
+ 528 005c 18       		.uleb128 0x18
+ 529 005d 9642     		.uleb128 0x2116
+ 530 005f 19       		.uleb128 0x19
+ 531 0060 00       		.byte	0
+ 532 0061 00       		.byte	0
+ 533 0062 08       		.uleb128 0x8
+ 534 0063 2E       		.uleb128 0x2e
+ 535 0064 00       		.byte	0
+ 536 0065 3F       		.uleb128 0x3f
+ 537 0066 19       		.uleb128 0x19
+ 538 0067 03       		.uleb128 0x3
+ 539 0068 0E       		.uleb128 0xe
+ 540 0069 3A       		.uleb128 0x3a
+ 541 006a 0B       		.uleb128 0xb
+ 542 006b 3B       		.uleb128 0x3b
+ 543 006c 0B       		.uleb128 0xb
+ 544 006d 27       		.uleb128 0x27
+ 545 006e 19       		.uleb128 0x19
+ 546 006f 11       		.uleb128 0x11
+ 547 0070 01       		.uleb128 0x1
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 15
+
+
+ 548 0071 12       		.uleb128 0x12
+ 549 0072 06       		.uleb128 0x6
+ 550 0073 40       		.uleb128 0x40
+ 551 0074 18       		.uleb128 0x18
+ 552 0075 9742     		.uleb128 0x2117
+ 553 0077 19       		.uleb128 0x19
+ 554 0078 00       		.byte	0
+ 555 0079 00       		.byte	0
+ 556 007a 09       		.uleb128 0x9
+ 557 007b 2E       		.uleb128 0x2e
+ 558 007c 01       		.byte	0x1
+ 559 007d 3F       		.uleb128 0x3f
+ 560 007e 19       		.uleb128 0x19
+ 561 007f 03       		.uleb128 0x3
+ 562 0080 0E       		.uleb128 0xe
+ 563 0081 3A       		.uleb128 0x3a
+ 564 0082 0B       		.uleb128 0xb
+ 565 0083 3B       		.uleb128 0x3b
+ 566 0084 0B       		.uleb128 0xb
+ 567 0085 27       		.uleb128 0x27
+ 568 0086 19       		.uleb128 0x19
+ 569 0087 11       		.uleb128 0x11
+ 570 0088 01       		.uleb128 0x1
+ 571 0089 12       		.uleb128 0x12
+ 572 008a 06       		.uleb128 0x6
+ 573 008b 40       		.uleb128 0x40
+ 574 008c 18       		.uleb128 0x18
+ 575 008d 9742     		.uleb128 0x2117
+ 576 008f 19       		.uleb128 0x19
+ 577 0090 01       		.uleb128 0x1
+ 578 0091 13       		.uleb128 0x13
+ 579 0092 00       		.byte	0
+ 580 0093 00       		.byte	0
+ 581 0094 0A       		.uleb128 0xa
+ 582 0095 05       		.uleb128 0x5
+ 583 0096 00       		.byte	0
+ 584 0097 03       		.uleb128 0x3
+ 585 0098 0E       		.uleb128 0xe
+ 586 0099 3A       		.uleb128 0x3a
+ 587 009a 0B       		.uleb128 0xb
+ 588 009b 3B       		.uleb128 0x3b
+ 589 009c 0B       		.uleb128 0xb
+ 590 009d 49       		.uleb128 0x49
+ 591 009e 13       		.uleb128 0x13
+ 592 009f 02       		.uleb128 0x2
+ 593 00a0 18       		.uleb128 0x18
+ 594 00a1 00       		.byte	0
+ 595 00a2 00       		.byte	0
+ 596 00a3 0B       		.uleb128 0xb
+ 597 00a4 34       		.uleb128 0x34
+ 598 00a5 00       		.byte	0
+ 599 00a6 03       		.uleb128 0x3
+ 600 00a7 0E       		.uleb128 0xe
+ 601 00a8 3A       		.uleb128 0x3a
+ 602 00a9 0B       		.uleb128 0xb
+ 603 00aa 3B       		.uleb128 0x3b
+ 604 00ab 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 16
+
+
+ 605 00ac 49       		.uleb128 0x49
+ 606 00ad 13       		.uleb128 0x13
+ 607 00ae 02       		.uleb128 0x2
+ 608 00af 18       		.uleb128 0x18
+ 609 00b0 00       		.byte	0
+ 610 00b1 00       		.byte	0
+ 611 00b2 0C       		.uleb128 0xc
+ 612 00b3 34       		.uleb128 0x34
+ 613 00b4 00       		.byte	0
+ 614 00b5 03       		.uleb128 0x3
+ 615 00b6 0E       		.uleb128 0xe
+ 616 00b7 3A       		.uleb128 0x3a
+ 617 00b8 0B       		.uleb128 0xb
+ 618 00b9 3B       		.uleb128 0x3b
+ 619 00ba 0B       		.uleb128 0xb
+ 620 00bb 49       		.uleb128 0x49
+ 621 00bc 13       		.uleb128 0x13
+ 622 00bd 3F       		.uleb128 0x3f
+ 623 00be 19       		.uleb128 0x19
+ 624 00bf 02       		.uleb128 0x2
+ 625 00c0 18       		.uleb128 0x18
+ 626 00c1 00       		.byte	0
+ 627 00c2 00       		.byte	0
+ 628 00c3 00       		.byte	0
+ 629              		.section	.debug_aranges,"",%progbits
+ 630 0000 3C000000 		.4byte	0x3c
+ 631 0004 0200     		.2byte	0x2
+ 632 0006 00000000 		.4byte	.Ldebug_info0
+ 633 000a 04       		.byte	0x4
+ 634 000b 00       		.byte	0
+ 635 000c 0000     		.2byte	0
+ 636 000e 0000     		.2byte	0
+ 637 0010 00000000 		.4byte	.LFB0
+ 638 0014 50000000 		.4byte	.LFE0-.LFB0
+ 639 0018 00000000 		.4byte	.LFB1
+ 640 001c 48000000 		.4byte	.LFE1-.LFB1
+ 641 0020 00000000 		.4byte	.LFB2
+ 642 0024 20000000 		.4byte	.LFE2-.LFB2
+ 643 0028 00000000 		.4byte	.LFB3
+ 644 002c 34000000 		.4byte	.LFE3-.LFB3
+ 645 0030 00000000 		.4byte	.LFB4
+ 646 0034 38000000 		.4byte	.LFE4-.LFB4
+ 647 0038 00000000 		.4byte	0
+ 648 003c 00000000 		.4byte	0
+ 649              		.section	.debug_ranges,"",%progbits
+ 650              	.Ldebug_ranges0:
+ 651 0000 00000000 		.4byte	.LFB0
+ 652 0004 50000000 		.4byte	.LFE0
+ 653 0008 00000000 		.4byte	.LFB1
+ 654 000c 48000000 		.4byte	.LFE1
+ 655 0010 00000000 		.4byte	.LFB2
+ 656 0014 20000000 		.4byte	.LFE2
+ 657 0018 00000000 		.4byte	.LFB3
+ 658 001c 34000000 		.4byte	.LFE3
+ 659 0020 00000000 		.4byte	.LFB4
+ 660 0024 38000000 		.4byte	.LFE4
+ 661 0028 00000000 		.4byte	0
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 17
+
+
+ 662 002c 00000000 		.4byte	0
+ 663              		.section	.debug_line,"",%progbits
+ 664              	.Ldebug_line0:
+ 665 0000 C0000000 		.section	.debug_str,"MS",%progbits,1
+ 665      02004C00 
+ 665      00000201 
+ 665      FB0E0D00 
+ 665      01010101 
+ 666              	.LASF6:
+ 667 0000 6C6F6E67 		.ascii	"long long int\000"
+ 667      206C6F6E 
+ 667      6720696E 
+ 667      7400
+ 668              	.LASF8:
+ 669 000e 756E7369 		.ascii	"unsigned int\000"
+ 669      676E6564 
+ 669      20696E74 
+ 669      00
+ 670              	.LASF18:
+ 671 001b 53616D70 		.ascii	"Sample_Hold_1_Stop\000"
+ 671      6C655F48 
+ 671      6F6C645F 
+ 671      315F5374 
+ 671      6F7000
+ 672              	.LASF25:
+ 673 002e 53616D70 		.ascii	"Sample_Hold_1_initVar\000"
+ 673      6C655F48 
+ 673      6F6C645F 
+ 673      315F696E 
+ 673      69745661 
+ 674              	.LASF16:
+ 675 0044 53616D70 		.ascii	"Sample_Hold_1_Enable\000"
+ 675      6C655F48 
+ 675      6F6C645F 
+ 675      315F456E 
+ 675      61626C65 
+ 676              	.LASF12:
+ 677 0059 75696E74 		.ascii	"uint8\000"
+ 677      3800
+ 678              	.LASF5:
+ 679 005f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 679      20756E73 
+ 679      69676E65 
+ 679      6420696E 
+ 679      7400
+ 680              	.LASF7:
+ 681 0071 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 681      206C6F6E 
+ 681      6720756E 
+ 681      7369676E 
+ 681      65642069 
+ 682              	.LASF9:
+ 683 0088 666C6F61 		.ascii	"float\000"
+ 683      7400
+ 684              	.LASF1:
+ 685 008e 756E7369 		.ascii	"unsigned char\000"
+ 685      676E6564 
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 18
+
+
+ 685      20636861 
+ 685      7200
+ 686              	.LASF11:
+ 687 009c 63686172 		.ascii	"char\000"
+ 687      00
+ 688              	.LASF4:
+ 689 00a1 6C6F6E67 		.ascii	"long int\000"
+ 689      20696E74 
+ 689      00
+ 690              	.LASF13:
+ 691 00aa 72656738 		.ascii	"reg8\000"
+ 691      00
+ 692              	.LASF10:
+ 693 00af 646F7562 		.ascii	"double\000"
+ 693      6C6500
+ 694              	.LASF20:
+ 695 00b6 2E5C4765 		.ascii	".\\Generated_Source\\PSoC5\\Sample_Hold_1.c\000"
+ 695      6E657261 
+ 695      7465645F 
+ 695      536F7572 
+ 695      63655C50 
+ 696              	.LASF15:
+ 697 00df 53616D70 		.ascii	"Sample_Hold_1_Init\000"
+ 697      6C655F48 
+ 697      6F6C645F 
+ 697      315F496E 
+ 697      697400
+ 698              	.LASF17:
+ 699 00f2 53616D70 		.ascii	"Sample_Hold_1_Start\000"
+ 699      6C655F48 
+ 699      6F6C645F 
+ 699      315F5374 
+ 699      61727400 
+ 700              	.LASF3:
+ 701 0106 73686F72 		.ascii	"short unsigned int\000"
+ 701      7420756E 
+ 701      7369676E 
+ 701      65642069 
+ 701      6E7400
+ 702              	.LASF0:
+ 703 0119 7369676E 		.ascii	"signed char\000"
+ 703      65642063 
+ 703      68617200 
+ 704              	.LASF21:
+ 705 0125 433A5C55 		.ascii	"C:\\Users\\Randhir\\Desktop\\Project\\Assignment\\C"
+ 705      73657273 
+ 705      5C52616E 
+ 705      64686972 
+ 705      5C446573 
+ 706 0152 45393532 		.ascii	"E95277 ADC and UART\\CE95277 ADC and UART.cydsn\000"
+ 706      37372041 
+ 706      44432061 
+ 706      6E642055 
+ 706      4152545C 
+ 707              	.LASF14:
+ 708 0181 73697A65 		.ascii	"sizetype\000"
+ 708      74797065 
+ARM GAS  C:\Users\Randhir\AppData\Local\Temp\ccFd2DXM.s 			page 19
+
+
+ 708      00
+ 709              	.LASF2:
+ 710 018a 73686F72 		.ascii	"short int\000"
+ 710      7420696E 
+ 710      7400
+ 711              	.LASF19:
+ 712 0194 474E5520 		.ascii	"GNU C 4.8.4 20140526 (release) [ARM/embedded-4_8-br"
+ 712      4320342E 
+ 712      382E3420 
+ 712      32303134 
+ 712      30353236 
+ 713 01c7 616E6368 		.ascii	"anch revision 211358] -mcpu=cortex-m3 -mthumb -g -O"
+ 713      20726576 
+ 713      6973696F 
+ 713      6E203231 
+ 713      31333538 
+ 714 01fa 30202D66 		.ascii	"0 -ffunction-sections\000"
+ 714      66756E63 
+ 714      74696F6E 
+ 714      2D736563 
+ 714      74696F6E 
+ 715              	.LASF22:
+ 716 0210 53616D70 		.ascii	"Sample_Hold_1_SetPower\000"
+ 716      6C655F48 
+ 716      6F6C645F 
+ 716      315F5365 
+ 716      74506F77 
+ 717              	.LASF24:
+ 718 0227 746D7043 		.ascii	"tmpCR\000"
+ 718      5200
+ 719              	.LASF23:
+ 720 022d 706F7765 		.ascii	"power\000"
+ 720      7200
+ 721              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.4 20140526 (release) [ARM/embedded-4_8-br

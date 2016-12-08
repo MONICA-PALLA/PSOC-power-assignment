@@ -1,0 +1,1255 @@
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m3
+   3              		.fpu softvfp
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 6
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.thumb
+  14              		.file	"main.c"
+  15              		.text
+  16              	.Ltext0:
+  17              		.cfi_sections	.debug_frame
+  18              		.section	.rodata
+  19              		.align	2
+  20              	.LC0:
+  21 0000 434F4D20 		.ascii	"COM Port Open\000"
+  21      506F7274 
+  21      204F7065 
+  21      6E00
+  22 000e 0000     		.align	2
+  23              	.LC1:
+  24 0010 53616D70 		.ascii	"Sample: %lu mV\015\012\000"
+  24      6C653A20 
+  24      256C7520 
+  24      6D560D0A 
+  24      00
+  25              		.global	__aeabi_i2f
+  26 0021 000000   		.align	2
+  27              	.LC2:
+  28 0024 456D756C 		.ascii	"Emulated Data: %x \015\012\000"
+  28      61746564 
+  28      20446174 
+  28      613A2025 
+  28      78200D0A 
+  29              		.global	__aeabi_fmul
+  30              		.global	__aeabi_f2iz
+  31              		.global	__aeabi_i2d
+  32              		.global	__aeabi_d2iz
+  33 0039 000000   		.align	2
+  34              	.LC3:
+  35 003c 706F7765 		.ascii	"power : %d\015\012\000"
+  35      72203A20 
+  35      25640D0A 
+  35      00
+  36 0049 000000   		.section	.text.main,"ax",%progbits
+  37              		.align	2
+  38              		.global	main
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	main, %function
+  42              	main:
+  43              	.LFB63:
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 2
+
+
+  44              		.file 1 ".\\main.c"
+   1:.\main.c      **** /******************************************************************************
+   2:.\main.c      **** * Project Name		: CE95277 ADC and UART
+   3:.\main.c      **** * File Name			: main.c
+   4:.\main.c      **** * Version 			: **
+   5:.\main.c      **** * Device Used		: CY8C5888LTI-LP097
+   6:.\main.c      **** * Software Used		: PSoC Creator 3.1 SP2
+   7:.\main.c      **** * Compiler    		: ARM GCC 4.8.4, ARM RVDS Generic, ARM MDK Generic
+   8:.\main.c      **** * Related Hardware	: CY8CKIT059 PSoC 5 LP Prototyping Kit 
+   9:.\main.c      **** * Owner				: KLMZ
+  10:.\main.c      **** *
+  11:.\main.c      **** ********************************************************************************
+  12:.\main.c      **** * Copyright (2015), Cypress Semiconductor Corporation. All Rights Reserved.
+  13:.\main.c      **** ********************************************************************************
+  14:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  15:.\main.c      **** * and is protected by and subject to worldwide patent protection (United
+  16:.\main.c      **** * States and foreign), United States copyright laws and international treaty
+  17:.\main.c      **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  18:.\main.c      **** * non-transferable license to copy, use, modify, create derivative works of,
+  19:.\main.c      **** * and compile the Cypress Source Code and derivative works for the sole
+  20:.\main.c      **** * purpose of creating custom software in support of licensee product to be
+  21:.\main.c      **** * used only in conjunction with a Cypress integrated circuit as specified in
+  22:.\main.c      **** * the applicable agreement. Any reproduction, modification, translation,
+  23:.\main.c      **** * compilation, or representation of this software except as specified above 
+  24:.\main.c      **** * is prohibited without the express written permission of Cypress.
+  25:.\main.c      **** *
+  26:.\main.c      **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  27:.\main.c      **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  28:.\main.c      **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  29:.\main.c      **** * Cypress reserves the right to make changes without further notice to the 
+  30:.\main.c      **** * materials described herein. Cypress does not assume any liability arising out 
+  31:.\main.c      **** * of the application or use of any product or circuit described herein. Cypress 
+  32:.\main.c      **** * does not authorize its products for use as critical components in life-support 
+  33:.\main.c      **** * systems where a malfunction or failure may reasonably be expected to result in 
+  34:.\main.c      **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  35:.\main.c      **** * support systems application implies that the manufacturer assumes all risk of 
+  36:.\main.c      **** * such use and in doing so indemnifies Cypress against all charges. 
+  37:.\main.c      **** *
+  38:.\main.c      **** * Use of this Software may be limited by and subject to the applicable Cypress
+  39:.\main.c      **** * software license agreement. 
+  40:.\main.c      **** *******************************************************************************/
+  41:.\main.c      **** 
+  42:.\main.c      **** #include <device.h>
+  43:.\main.c      **** #include "stdio.h"
+  44:.\main.c      **** #include "math.h"
+  45:.\main.c      **** 
+  46:.\main.c      **** /* Project Defines */
+  47:.\main.c      **** #define FALSE  0
+  48:.\main.c      **** #define TRUE   1
+  49:.\main.c      **** #define TRANSMIT_BUFFER_SIZE  32
+  50:.\main.c      **** 
+  51:.\main.c      **** 
+  52:.\main.c      **** /*******************************************************************************
+  53:.\main.c      **** * Function Name: main
+  54:.\main.c      **** ********************************************************************************
+  55:.\main.c      **** *
+  56:.\main.c      **** * Summary:
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 3
+
+
+  57:.\main.c      **** *  main() performs following functions:
+  58:.\main.c      **** *  1: Starts the ADC and UART components.
+  59:.\main.c      **** *  2: Checks for ADC end of conversion.  Stores latest result in output
+  60:.\main.c      **** *     if conversion complete.
+  61:.\main.c      **** *  3: Checks for UART input.
+  62:.\main.c      **** *     On 'C' or 'c' received: transmits the last sample via the UART.
+  63:.\main.c      **** *     On 'S' or 's' received: continuously transmits samples as they are completed.
+  64:.\main.c      **** *     On 'X' or 'x' received: stops continuously transmitting samples.
+  65:.\main.c      **** *     On 'E' or 'e' received: transmits a dummy byte of data.
+  66:.\main.c      **** *
+  67:.\main.c      **** * Parameters:
+  68:.\main.c      **** *  None.
+  69:.\main.c      **** *
+  70:.\main.c      **** * Return:
+  71:.\main.c      **** *  None.
+  72:.\main.c      **** *
+  73:.\main.c      **** *******************************************************************************/
+  74:.\main.c      **** int main()
+  75:.\main.c      **** {
+  45              		.loc 1 75 0
+  46              		.cfi_startproc
+  47              		@ args = 0, pretend = 0, frame = 144
+  48              		@ frame_needed = 1, uses_anonymous_args = 0
+  49 0000 80B5     		push	{r7, lr}
+  50              		.cfi_def_cfa_offset 8
+  51              		.cfi_offset 7, -8
+  52              		.cfi_offset 14, -4
+  53 0002 A4B0     		sub	sp, sp, #144
+  54              		.cfi_def_cfa_offset 152
+  55 0004 00AF     		add	r7, sp, #0
+  56              		.cfi_def_cfa_register 7
+  76:.\main.c      ****     /* Variable to store ADC result */
+  77:.\main.c      ****     int32 Output;
+  78:.\main.c      ****     /* Variable to store UART received character */
+  79:.\main.c      ****     uint8 Ch;
+  80:.\main.c      ****     /* Variable used to send emulated data */
+  81:.\main.c      ****     uint8 EmulatedData;
+  82:.\main.c      ****     /* Flags used to store transmit data commands */
+  83:.\main.c      ****     uint8 ContinuouslySendData;
+  84:.\main.c      ****     uint8 SendSingleByte;
+  85:.\main.c      ****     uint8 SendEmulatedData;
+  86:.\main.c      ****     /* Transmit Buffer */
+  87:.\main.c      ****     char TransmitBuffer[TRANSMIT_BUFFER_SIZE];
+  88:.\main.c      ****     float volt[21]={-1};
+  57              		.loc 1 88 0
+  58 0006 3B46     		mov	r3, r7
+  59 0008 5422     		movs	r2, #84
+  60 000a 1846     		mov	r0, r3
+  61 000c 0021     		movs	r1, #0
+  62 000e FFF7FEFF 		bl	memset
+  63 0012 8F4B     		ldr	r3, .L19
+  64 0014 3B60     		str	r3, [r7]	@ float
+  89:.\main.c      ****    // int current[10]={0};
+  90:.\main.c      ****     /* Start the components */
+  91:.\main.c      ****     ADC_DelSig_1_Start();
+  65              		.loc 1 91 0
+  66 0016 FFF7FEFF 		bl	ADC_DelSig_1_Start
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 4
+
+
+  92:.\main.c      ****     UART_1_Start();
+  67              		.loc 1 92 0
+  68 001a FFF7FEFF 		bl	UART_1_Start
+  93:.\main.c      ****     uint16 vrms=0;
+  69              		.loc 1 93 0
+  70 001e 0023     		movs	r3, #0
+  71 0020 A7F87E30 		strh	r3, [r7, #126]	@ movhi
+  94:.\main.c      ****     /* Initialize Variables */
+  95:.\main.c      ****     ContinuouslySendData = FALSE;
+  72              		.loc 1 95 0
+  73 0024 0023     		movs	r3, #0
+  74 0026 87F88E30 		strb	r3, [r7, #142]
+  96:.\main.c      ****     SendSingleByte = FALSE;
+  75              		.loc 1 96 0
+  76 002a 0023     		movs	r3, #0
+  77 002c 87F88D30 		strb	r3, [r7, #141]
+  97:.\main.c      ****     SendEmulatedData = TRUE;
+  78              		.loc 1 97 0
+  79 0030 0123     		movs	r3, #1
+  80 0032 87F88C30 		strb	r3, [r7, #140]
+  98:.\main.c      ****     EmulatedData = 0;
+  81              		.loc 1 98 0
+  82 0036 0023     		movs	r3, #0
+  83 0038 87F88F30 		strb	r3, [r7, #143]
+  99:.\main.c      ****     
+ 100:.\main.c      ****     /* Start the ADC conversion */
+ 101:.\main.c      ****     ADC_DelSig_1_StartConvert();
+  84              		.loc 1 101 0
+  85 003c FFF7FEFF 		bl	ADC_DelSig_1_StartConvert
+ 102:.\main.c      ****     
+ 103:.\main.c      ****     /* Send message to verify COM port is connected properly */
+ 104:.\main.c      ****     UART_1_PutString("COM Port Open");
+  86              		.loc 1 104 0
+  87 0040 8448     		ldr	r0, .L19+4
+  88 0042 FFF7FEFF 		bl	UART_1_PutString
+ 105:.\main.c      ****     
+ 106:.\main.c      ****     int n;
+ 107:.\main.c      ****     
+ 108:.\main.c      ****     for(n=0;n<20;)
+  89              		.loc 1 108 0
+  90 0046 0023     		movs	r3, #0
+  91 0048 C7F88830 		str	r3, [r7, #136]
+  92 004c 89E0     		b	.L2
+  93              	.L15:
+ 109:.\main.c      ****     {        
+ 110:.\main.c      ****         /* Non-blocking call to get the latest data recieved  */
+ 111:.\main.c      ****         Ch = UART_1_GetChar();
+  94              		.loc 1 111 0
+  95 004e FFF7FEFF 		bl	UART_1_GetChar
+  96 0052 0346     		mov	r3, r0
+  97 0054 87F87D30 		strb	r3, [r7, #125]
+ 112:.\main.c      ****         
+ 113:.\main.c      ****         /* Set flags based on UART command */
+ 114:.\main.c      ****         switch(Ch)
+  98              		.loc 1 114 0
+  99 0058 97F87D30 		ldrb	r3, [r7, #125]	@ zero_extendqisi2
+ 100 005c 582B     		cmp	r3, #88
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 5
+
+
+ 101 005e 21D0     		beq	.L4
+ 102 0060 582B     		cmp	r3, #88
+ 103 0062 0BDC     		bgt	.L5
+ 104 0064 432B     		cmp	r3, #67
+ 105 0066 15D0     		beq	.L6
+ 106 0068 432B     		cmp	r3, #67
+ 107 006a 02DC     		bgt	.L7
+ 108 006c 002B     		cmp	r3, #0
+ 109 006e 21D0     		beq	.L18
+ 115:.\main.c      ****         {
+ 116:.\main.c      ****             case 0:
+ 117:.\main.c      ****                 /* No new data was recieved */
+ 118:.\main.c      ****                 break;
+ 119:.\main.c      ****             case 'C':
+ 120:.\main.c      ****             case 'c':
+ 121:.\main.c      ****                 SendSingleByte = TRUE;
+ 122:.\main.c      ****                 break;
+ 123:.\main.c      ****             case 'S':
+ 124:.\main.c      ****             case 's':
+ 125:.\main.c      ****                 ContinuouslySendData = TRUE;
+ 126:.\main.c      ****                 break;
+ 127:.\main.c      ****             case 'X':
+ 128:.\main.c      ****             case 'x':
+ 129:.\main.c      ****                 ContinuouslySendData = FALSE;
+ 130:.\main.c      ****                 break;
+ 131:.\main.c      ****             case 'E':
+ 132:.\main.c      ****             case 'e':
+ 133:.\main.c      ****                 SendEmulatedData = TRUE;
+ 134:.\main.c      ****                 break;
+ 135:.\main.c      ****             default:
+ 136:.\main.c      ****                 /* Place error handling code here */
+ 137:.\main.c      ****                 break;    
+ 110              		.loc 1 137 0
+ 111 0070 21E0     		b	.L12
+ 112              	.L7:
+ 114:.\main.c      ****         {
+ 113              		.loc 1 114 0
+ 114 0072 452B     		cmp	r3, #69
+ 115 0074 1AD0     		beq	.L9
+ 116 0076 532B     		cmp	r3, #83
+ 117 0078 10D0     		beq	.L10
+ 118              		.loc 1 137 0
+ 119 007a 1CE0     		b	.L12
+ 120              	.L5:
+ 114:.\main.c      ****         {
+ 121              		.loc 1 114 0
+ 122 007c 652B     		cmp	r3, #101
+ 123 007e 15D0     		beq	.L9
+ 124 0080 652B     		cmp	r3, #101
+ 125 0082 02DC     		bgt	.L11
+ 126 0084 632B     		cmp	r3, #99
+ 127 0086 05D0     		beq	.L6
+ 128              		.loc 1 137 0
+ 129 0088 15E0     		b	.L12
+ 130              	.L11:
+ 114:.\main.c      ****         {
+ 131              		.loc 1 114 0
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 6
+
+
+ 132 008a 732B     		cmp	r3, #115
+ 133 008c 06D0     		beq	.L10
+ 134 008e 782B     		cmp	r3, #120
+ 135 0090 08D0     		beq	.L4
+ 136              		.loc 1 137 0
+ 137 0092 10E0     		b	.L12
+ 138              	.L6:
+ 121:.\main.c      ****                 break;
+ 139              		.loc 1 121 0
+ 140 0094 0123     		movs	r3, #1
+ 141 0096 87F88D30 		strb	r3, [r7, #141]
+ 122:.\main.c      ****             case 'S':
+ 142              		.loc 1 122 0
+ 143 009a 0CE0     		b	.L12
+ 144              	.L10:
+ 125:.\main.c      ****                 break;
+ 145              		.loc 1 125 0
+ 146 009c 0123     		movs	r3, #1
+ 147 009e 87F88E30 		strb	r3, [r7, #142]
+ 126:.\main.c      ****             case 'X':
+ 148              		.loc 1 126 0
+ 149 00a2 08E0     		b	.L12
+ 150              	.L4:
+ 129:.\main.c      ****                 break;
+ 151              		.loc 1 129 0
+ 152 00a4 0023     		movs	r3, #0
+ 153 00a6 87F88E30 		strb	r3, [r7, #142]
+ 130:.\main.c      ****             case 'E':
+ 154              		.loc 1 130 0
+ 155 00aa 04E0     		b	.L12
+ 156              	.L9:
+ 133:.\main.c      ****                 break;
+ 157              		.loc 1 133 0
+ 158 00ac 0123     		movs	r3, #1
+ 159 00ae 87F88C30 		strb	r3, [r7, #140]
+ 134:.\main.c      ****             default:
+ 160              		.loc 1 134 0
+ 161 00b2 00E0     		b	.L12
+ 162              	.L18:
+ 118:.\main.c      ****             case 'C':
+ 163              		.loc 1 118 0
+ 164 00b4 00BF     		nop
+ 165              	.L12:
+ 138:.\main.c      ****         }
+ 139:.\main.c      ****         
+ 140:.\main.c      ****         /* Check to see if an ADC conversion has completed */
+ 141:.\main.c      ****         if(ADC_DelSig_1_IsEndConversion(ADC_DelSig_1_RETURN_STATUS))
+ 166              		.loc 1 141 0
+ 167 00b6 0120     		movs	r0, #1
+ 168 00b8 FFF7FEFF 		bl	ADC_DelSig_1_IsEndConversion
+ 169 00bc 0346     		mov	r3, r0
+ 170 00be 002B     		cmp	r3, #0
+ 171 00c0 4FD0     		beq	.L2
+ 142:.\main.c      ****         {
+ 143:.\main.c      ****             /* Use the GetResult16 API to get an 8 bit unsigned result in
+ 144:.\main.c      ****              * single ended mode.  The API CountsTo_mVolts is then used
+ 145:.\main.c      ****              * to convert the ADC countxs into mV before transmitting via
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 7
+
+
+ 146:.\main.c      ****              * the UART.  See the datasheet API description for more
+ 147:.\main.c      ****              * details */
+ 148:.\main.c      ****             Output = ADC_DelSig_1_CountsTo_mVolts(ADC_DelSig_1_GetResult16());
+ 172              		.loc 1 148 0
+ 173 00c2 FFF7FEFF 		bl	ADC_DelSig_1_GetResult16
+ 174 00c6 0346     		mov	r3, r0
+ 175 00c8 1846     		mov	r0, r3
+ 176 00ca FFF7FEFF 		bl	ADC_DelSig_1_CountsTo_mVolts
+ 177 00ce 0346     		mov	r3, r0
+ 178 00d0 BB67     		str	r3, [r7, #120]
+ 149:.\main.c      ****             
+ 150:.\main.c      ****             /* Send data based on last UART command */
+ 151:.\main.c      ****             if(SendSingleByte || ContinuouslySendData)
+ 179              		.loc 1 151 0
+ 180 00d2 97F88D30 		ldrb	r3, [r7, #141]	@ zero_extendqisi2
+ 181 00d6 002B     		cmp	r3, #0
+ 182 00d8 03D1     		bne	.L13
+ 183              		.loc 1 151 0 is_stmt 0 discriminator 1
+ 184 00da 97F88E30 		ldrb	r3, [r7, #142]	@ zero_extendqisi2
+ 185 00de 002B     		cmp	r3, #0
+ 186 00e0 21D0     		beq	.L14
+ 187              	.L13:
+ 152:.\main.c      ****             {
+ 153:.\main.c      ****                 Sample_Hold_1_Start();
+ 188              		.loc 1 153 0 is_stmt 1
+ 189 00e2 FFF7FEFF 		bl	Sample_Hold_1_Start
+ 154:.\main.c      ****                 /* Format ADC result for transmition */
+ 155:.\main.c      ****                 sprintf(TransmitBuffer, "Sample: %lu mV\r\n", Output);
+ 190              		.loc 1 155 0
+ 191 00e6 07F15403 		add	r3, r7, #84
+ 192 00ea 1846     		mov	r0, r3
+ 193 00ec 5A49     		ldr	r1, .L19+8
+ 194 00ee BA6F     		ldr	r2, [r7, #120]
+ 195 00f0 FFF7FEFF 		bl	sprintf
+ 156:.\main.c      ****                 //UART_1_PutString(TransmitBuffer);
+ 157:.\main.c      ****                 volt[n]=Output;
+ 196              		.loc 1 157 0
+ 197 00f4 B86F     		ldr	r0, [r7, #120]
+ 198 00f6 FFF7FEFF 		bl	__aeabi_i2f
+ 199 00fa 0246     		mov	r2, r0
+ 200 00fc D7F88830 		ldr	r3, [r7, #136]
+ 201 0100 9B00     		lsls	r3, r3, #2
+ 202 0102 07F19001 		add	r1, r7, #144
+ 203 0106 0B44     		add	r3, r3, r1
+ 204 0108 43F8902C 		str	r2, [r3, #-144]	@ float
+ 158:.\main.c      ****                 n+=1;
+ 205              		.loc 1 158 0
+ 206 010c D7F88830 		ldr	r3, [r7, #136]
+ 207 0110 0133     		adds	r3, r3, #1
+ 208 0112 C7F88830 		str	r3, [r7, #136]
+ 159:.\main.c      ****                 UART_1_PutString(TransmitBuffer);
+ 209              		.loc 1 159 0
+ 210 0116 07F15403 		add	r3, r7, #84
+ 211 011a 1846     		mov	r0, r3
+ 212 011c FFF7FEFF 		bl	UART_1_PutString
+ 160:.\main.c      ****                 /* Reset the send once flag */
+ 161:.\main.c      ****                // SendSingleByte = FALSE;
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 8
+
+
+ 162:.\main.c      ****                 Sample_Hold_1_Stop();
+ 213              		.loc 1 162 0
+ 214 0120 FFF7FEFF 		bl	Sample_Hold_1_Stop
+ 215 0124 1DE0     		b	.L2
+ 216              	.L14:
+ 163:.\main.c      ****             }
+ 164:.\main.c      ****             else if(SendEmulatedData)
+ 217              		.loc 1 164 0
+ 218 0126 97F88C30 		ldrb	r3, [r7, #140]	@ zero_extendqisi2
+ 219 012a 002B     		cmp	r3, #0
+ 220 012c 19D0     		beq	.L2
+ 165:.\main.c      ****             {
+ 166:.\main.c      ****                 Sample_Hold_1_Start();
+ 221              		.loc 1 166 0
+ 222 012e FFF7FEFF 		bl	Sample_Hold_1_Start
+ 167:.\main.c      ****                 /* Format ADC result for transmition */
+ 168:.\main.c      ****                 sprintf(TransmitBuffer, "Emulated Data: %x \r\n", EmulatedData);
+ 223              		.loc 1 168 0
+ 224 0132 97F88F30 		ldrb	r3, [r7, #143]	@ zero_extendqisi2
+ 225 0136 07F15402 		add	r2, r7, #84
+ 226 013a 1046     		mov	r0, r2
+ 227 013c 4749     		ldr	r1, .L19+12
+ 228 013e 1A46     		mov	r2, r3
+ 229 0140 FFF7FEFF 		bl	sprintf
+ 169:.\main.c      ****                 /* Send out the data */
+ 170:.\main.c      ****                 UART_1_PutString(TransmitBuffer);
+ 230              		.loc 1 170 0
+ 231 0144 07F15403 		add	r3, r7, #84
+ 232 0148 1846     		mov	r0, r3
+ 233 014a FFF7FEFF 		bl	UART_1_PutString
+ 171:.\main.c      ****                 EmulatedData++;
+ 234              		.loc 1 171 0
+ 235 014e 97F88F30 		ldrb	r3, [r7, #143]	@ zero_extendqisi2
+ 236 0152 0133     		adds	r3, r3, #1
+ 237 0154 87F88F30 		strb	r3, [r7, #143]
+ 172:.\main.c      ****                 /* Reset the send once flag */
+ 173:.\main.c      ****                 SendEmulatedData = FALSE;
+ 238              		.loc 1 173 0
+ 239 0158 0023     		movs	r3, #0
+ 240 015a 87F88C30 		strb	r3, [r7, #140]
+ 174:.\main.c      ****                 Sample_Hold_1_Stop();
+ 241              		.loc 1 174 0
+ 242 015e FFF7FEFF 		bl	Sample_Hold_1_Stop
+ 243              	.L2:
+ 108:.\main.c      ****     {        
+ 244              		.loc 1 108 0 discriminator 1
+ 245 0162 D7F88830 		ldr	r3, [r7, #136]
+ 246 0166 132B     		cmp	r3, #19
+ 247 0168 7FF771AF 		ble	.L15
+ 175:.\main.c      ****             }
+ 176:.\main.c      ****         }
+ 177:.\main.c      ****     }
+ 178:.\main.c      **** 
+ 179:.\main.c      ****     int power=0;
+ 248              		.loc 1 179 0
+ 249 016c 0023     		movs	r3, #0
+ 250 016e C7F88430 		str	r3, [r7, #132]
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 9
+
+
+ 180:.\main.c      ****     int power1=0;
+ 251              		.loc 1 180 0
+ 252 0172 0023     		movs	r3, #0
+ 253 0174 C7F88030 		str	r3, [r7, #128]
+ 181:.\main.c      ****     for(n=0;n<10;n=n+1)
+ 254              		.loc 1 181 0
+ 255 0178 0023     		movs	r3, #0
+ 256 017a C7F88830 		str	r3, [r7, #136]
+ 257 017e 2BE0     		b	.L16
+ 258              	.L17:
+ 259              	.LBB2:
+ 182:.\main.c      ****     {
+ 183:.\main.c      ****         int p=(volt[n+7]*volt[n]);
+ 260              		.loc 1 183 0 discriminator 3
+ 261 0180 D7F88830 		ldr	r3, [r7, #136]
+ 262 0184 0733     		adds	r3, r3, #7
+ 263 0186 9B00     		lsls	r3, r3, #2
+ 264 0188 07F19002 		add	r2, r7, #144
+ 265 018c 1344     		add	r3, r3, r2
+ 266 018e 53F8902C 		ldr	r2, [r3, #-144]	@ float
+ 267 0192 D7F88830 		ldr	r3, [r7, #136]
+ 268 0196 9B00     		lsls	r3, r3, #2
+ 269 0198 07F19001 		add	r1, r7, #144
+ 270 019c 0B44     		add	r3, r3, r1
+ 271 019e 53F8903C 		ldr	r3, [r3, #-144]	@ float
+ 272 01a2 1046     		mov	r0, r2
+ 273 01a4 1946     		mov	r1, r3
+ 274 01a6 FFF7FEFF 		bl	__aeabi_fmul
+ 275 01aa 0346     		mov	r3, r0
+ 276 01ac 1846     		mov	r0, r3
+ 277 01ae FFF7FEFF 		bl	__aeabi_f2iz
+ 278 01b2 0346     		mov	r3, r0
+ 279 01b4 7B67     		str	r3, [r7, #116]
+ 184:.\main.c      ****         power1=+p;
+ 280              		.loc 1 184 0 discriminator 3
+ 281 01b6 7B6F     		ldr	r3, [r7, #116]
+ 282 01b8 C7F88030 		str	r3, [r7, #128]
+ 185:.\main.c      ****         
+ 186:.\main.c      ****         power+=p*p;
+ 283              		.loc 1 186 0 discriminator 3
+ 284 01bc 7B6F     		ldr	r3, [r7, #116]
+ 285 01be 7A6F     		ldr	r2, [r7, #116]
+ 286 01c0 02FB03F3 		mul	r3, r2, r3
+ 287 01c4 D7F88420 		ldr	r2, [r7, #132]
+ 288 01c8 1344     		add	r3, r3, r2
+ 289 01ca C7F88430 		str	r3, [r7, #132]
+ 290              	.LBE2:
+ 181:.\main.c      ****     {
+ 291              		.loc 1 181 0 discriminator 3
+ 292 01ce D7F88830 		ldr	r3, [r7, #136]
+ 293 01d2 0133     		adds	r3, r3, #1
+ 294 01d4 C7F88830 		str	r3, [r7, #136]
+ 295              	.L16:
+ 181:.\main.c      ****     {
+ 296              		.loc 1 181 0 is_stmt 0 discriminator 1
+ 297 01d8 D7F88830 		ldr	r3, [r7, #136]
+ 298 01dc 092B     		cmp	r3, #9
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 10
+
+
+ 299 01de CFDD     		ble	.L17
+ 187:.\main.c      ****     }
+ 188:.\main.c      ****     power1=power1/10;
+ 300              		.loc 1 188 0 is_stmt 1
+ 301 01e0 D7F88030 		ldr	r3, [r7, #128]
+ 302 01e4 1E4A     		ldr	r2, .L19+16
+ 303 01e6 82FB0312 		smull	r1, r2, r2, r3
+ 304 01ea 9210     		asrs	r2, r2, #2
+ 305 01ec DB17     		asrs	r3, r3, #31
+ 306 01ee D31A     		subs	r3, r2, r3
+ 307 01f0 C7F88030 		str	r3, [r7, #128]
+ 189:.\main.c      ****     //sprintf(TransmitBuffer, "power : %d\r\n", power1);
+ 190:.\main.c      ****     //UART_1_PutString(TransmitBuffer);
+ 191:.\main.c      ****     power=power/10;
+ 308              		.loc 1 191 0
+ 309 01f4 D7F88430 		ldr	r3, [r7, #132]
+ 310 01f8 194A     		ldr	r2, .L19+16
+ 311 01fa 82FB0312 		smull	r1, r2, r2, r3
+ 312 01fe 9210     		asrs	r2, r2, #2
+ 313 0200 DB17     		asrs	r3, r3, #31
+ 314 0202 D31A     		subs	r3, r2, r3
+ 315 0204 C7F88430 		str	r3, [r7, #132]
+ 192:.\main.c      ****     power=sqrt(power);
+ 316              		.loc 1 192 0
+ 317 0208 D7F88400 		ldr	r0, [r7, #132]
+ 318 020c FFF7FEFF 		bl	__aeabi_i2d
+ 319 0210 0246     		mov	r2, r0
+ 320 0212 0B46     		mov	r3, r1
+ 321 0214 1046     		mov	r0, r2
+ 322 0216 1946     		mov	r1, r3
+ 323 0218 FFF7FEFF 		bl	sqrt
+ 324 021c 0246     		mov	r2, r0
+ 325 021e 0B46     		mov	r3, r1
+ 326 0220 1046     		mov	r0, r2
+ 327 0222 1946     		mov	r1, r3
+ 328 0224 FFF7FEFF 		bl	__aeabi_d2iz
+ 329 0228 0346     		mov	r3, r0
+ 330 022a C7F88430 		str	r3, [r7, #132]
+ 193:.\main.c      ****     
+ 194:.\main.c      ****     sprintf(TransmitBuffer, "power : %d\r\n", power);
+ 331              		.loc 1 194 0
+ 332 022e 07F15403 		add	r3, r7, #84
+ 333 0232 1846     		mov	r0, r3
+ 334 0234 0B49     		ldr	r1, .L19+20
+ 335 0236 D7F88420 		ldr	r2, [r7, #132]
+ 336 023a FFF7FEFF 		bl	sprintf
+ 195:.\main.c      ****     UART_1_PutString(TransmitBuffer);
+ 337              		.loc 1 195 0
+ 338 023e 07F15403 		add	r3, r7, #84
+ 339 0242 1846     		mov	r0, r3
+ 340 0244 FFF7FEFF 		bl	UART_1_PutString
+ 196:.\main.c      **** }
+ 341              		.loc 1 196 0
+ 342 0248 1846     		mov	r0, r3
+ 343 024a 9037     		adds	r7, r7, #144
+ 344              		.cfi_def_cfa_offset 8
+ 345 024c BD46     		mov	sp, r7
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 11
+
+
+ 346              		.cfi_def_cfa_register 13
+ 347              		@ sp needed
+ 348 024e 80BD     		pop	{r7, pc}
+ 349              	.L20:
+ 350              		.align	2
+ 351              	.L19:
+ 352 0250 000080BF 		.word	-1082130432
+ 353 0254 00000000 		.word	.LC0
+ 354 0258 10000000 		.word	.LC1
+ 355 025c 24000000 		.word	.LC2
+ 356 0260 67666666 		.word	1717986919
+ 357 0264 3C000000 		.word	.LC3
+ 358              		.cfi_endproc
+ 359              	.LFE63:
+ 360              		.size	main, .-main
+ 361              		.text
+ 362              	.Letext0:
+ 363              		.file 2 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 364              		.file 3 "c:\\program files (x86)\\cypress\\psoc creator\\3.3\\psoc creator\\import\\gnu\\arm\\4.9.
+ 365              		.file 4 "Generated_Source\\PSoC5/cytypes.h"
+ 366              		.file 5 "Generated_Source\\PSoC5/core_cm3.h"
+ 367              		.section	.debug_info,"",%progbits
+ 368              	.Ldebug_info0:
+ 369 0000 CD010000 		.4byte	0x1cd
+ 370 0004 0400     		.2byte	0x4
+ 371 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 372 000a 04       		.byte	0x4
+ 373 000b 01       		.uleb128 0x1
+ 374 000c 33000000 		.4byte	.LASF29
+ 375 0010 01       		.byte	0x1
+ 376 0011 E0000000 		.4byte	.LASF30
+ 377 0015 E9000000 		.4byte	.LASF31
+ 378 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 379 001d 00000000 		.4byte	0
+ 380 0021 00000000 		.4byte	.Ldebug_line0
+ 381 0025 02       		.uleb128 0x2
+ 382 0026 01       		.byte	0x1
+ 383 0027 06       		.byte	0x6
+ 384 0028 00020000 		.4byte	.LASF0
+ 385 002c 02       		.uleb128 0x2
+ 386 002d 01       		.byte	0x1
+ 387 002e 08       		.byte	0x8
+ 388 002f CD000000 		.4byte	.LASF1
+ 389 0033 02       		.uleb128 0x2
+ 390 0034 02       		.byte	0x2
+ 391 0035 05       		.byte	0x5
+ 392 0036 DB010000 		.4byte	.LASF2
+ 393 003a 02       		.uleb128 0x2
+ 394 003b 02       		.byte	0x2
+ 395 003c 07       		.byte	0x7
+ 396 003d 0C020000 		.4byte	.LASF3
+ 397 0041 03       		.uleb128 0x3
+ 398 0042 0D000000 		.4byte	.LASF9
+ 399 0046 02       		.byte	0x2
+ 400 0047 3F       		.byte	0x3f
+ 401 0048 4C000000 		.4byte	0x4c
+ 402 004c 02       		.uleb128 0x2
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 12
+
+
+ 403 004d 04       		.byte	0x4
+ 404 004e 05       		.byte	0x5
+ 405 004f EB010000 		.4byte	.LASF4
+ 406 0053 02       		.uleb128 0x2
+ 407 0054 04       		.byte	0x4
+ 408 0055 07       		.byte	0x7
+ 409 0056 2F010000 		.4byte	.LASF5
+ 410 005a 02       		.uleb128 0x2
+ 411 005b 08       		.byte	0x8
+ 412 005c 05       		.byte	0x5
+ 413 005d C3010000 		.4byte	.LASF6
+ 414 0061 02       		.uleb128 0x2
+ 415 0062 08       		.byte	0x8
+ 416 0063 07       		.byte	0x7
+ 417 0064 8C010000 		.4byte	.LASF7
+ 418 0068 04       		.uleb128 0x4
+ 419 0069 04       		.byte	0x4
+ 420 006a 05       		.byte	0x5
+ 421 006b 696E7400 		.ascii	"int\000"
+ 422 006f 02       		.uleb128 0x2
+ 423 0070 04       		.byte	0x4
+ 424 0071 07       		.byte	0x7
+ 425 0072 7F010000 		.4byte	.LASF8
+ 426 0076 03       		.uleb128 0x3
+ 427 0077 A3010000 		.4byte	.LASF10
+ 428 007b 03       		.byte	0x3
+ 429 007c 2C       		.byte	0x2c
+ 430 007d 41000000 		.4byte	0x41
+ 431 0081 05       		.uleb128 0x5
+ 432 0082 E5010000 		.4byte	.LASF11
+ 433 0086 04       		.byte	0x4
+ 434 0087 9201     		.2byte	0x192
+ 435 0089 2C000000 		.4byte	0x2c
+ 436 008d 05       		.uleb128 0x5
+ 437 008e 78010000 		.4byte	.LASF12
+ 438 0092 04       		.byte	0x4
+ 439 0093 9301     		.2byte	0x193
+ 440 0095 3A000000 		.4byte	0x3a
+ 441 0099 05       		.uleb128 0x5
+ 442 009a 41010000 		.4byte	.LASF13
+ 443 009e 04       		.byte	0x4
+ 444 009f 9701     		.2byte	0x197
+ 445 00a1 4C000000 		.4byte	0x4c
+ 446 00a5 02       		.uleb128 0x2
+ 447 00a6 04       		.byte	0x4
+ 448 00a7 04       		.byte	0x4
+ 449 00a8 C7000000 		.4byte	.LASF14
+ 450 00ac 02       		.uleb128 0x2
+ 451 00ad 08       		.byte	0x8
+ 452 00ae 04       		.byte	0x4
+ 453 00af 6C010000 		.4byte	.LASF15
+ 454 00b3 02       		.uleb128 0x2
+ 455 00b4 01       		.byte	0x1
+ 456 00b5 08       		.byte	0x8
+ 457 00b6 D1010000 		.4byte	.LASF16
+ 458 00ba 02       		.uleb128 0x2
+ 459 00bb 04       		.byte	0x4
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 13
+
+
+ 460 00bc 07       		.byte	0x7
+ 461 00bd BA010000 		.4byte	.LASF17
+ 462 00c1 02       		.uleb128 0x2
+ 463 00c2 08       		.byte	0x8
+ 464 00c3 04       		.byte	0x4
+ 465 00c4 F4010000 		.4byte	.LASF18
+ 466 00c8 06       		.uleb128 0x6
+ 467 00c9 73010000 		.4byte	.LASF32
+ 468 00cd 01       		.byte	0x1
+ 469 00ce 4A       		.byte	0x4a
+ 470 00cf 68000000 		.4byte	0x68
+ 471 00d3 00000000 		.4byte	.LFB63
+ 472 00d7 68020000 		.4byte	.LFE63-.LFB63
+ 473 00db 01       		.uleb128 0x1
+ 474 00dc 9C       		.byte	0x9c
+ 475 00dd 9F010000 		.4byte	0x19f
+ 476 00e1 07       		.uleb128 0x7
+ 477 00e2 17000000 		.4byte	.LASF19
+ 478 00e6 01       		.byte	0x1
+ 479 00e7 4D       		.byte	0x4d
+ 480 00e8 99000000 		.4byte	0x99
+ 481 00ec 02       		.uleb128 0x2
+ 482 00ed 91       		.byte	0x91
+ 483 00ee 60       		.sleb128 -32
+ 484 00ef 08       		.uleb128 0x8
+ 485 00f0 436800   		.ascii	"Ch\000"
+ 486 00f3 01       		.byte	0x1
+ 487 00f4 4F       		.byte	0x4f
+ 488 00f5 81000000 		.4byte	0x81
+ 489 00f9 02       		.uleb128 0x2
+ 490 00fa 91       		.byte	0x91
+ 491 00fb 65       		.sleb128 -27
+ 492 00fc 07       		.uleb128 0x7
+ 493 00fd 00000000 		.4byte	.LASF20
+ 494 0101 01       		.byte	0x1
+ 495 0102 51       		.byte	0x51
+ 496 0103 81000000 		.4byte	0x81
+ 497 0107 02       		.uleb128 0x2
+ 498 0108 91       		.byte	0x91
+ 499 0109 77       		.sleb128 -9
+ 500 010a 07       		.uleb128 0x7
+ 501 010b 1E000000 		.4byte	.LASF21
+ 502 010f 01       		.byte	0x1
+ 503 0110 53       		.byte	0x53
+ 504 0111 81000000 		.4byte	0x81
+ 505 0115 02       		.uleb128 0x2
+ 506 0116 91       		.byte	0x91
+ 507 0117 76       		.sleb128 -10
+ 508 0118 07       		.uleb128 0x7
+ 509 0119 1F020000 		.4byte	.LASF22
+ 510 011d 01       		.byte	0x1
+ 511 011e 54       		.byte	0x54
+ 512 011f 81000000 		.4byte	0x81
+ 513 0123 02       		.uleb128 0x2
+ 514 0124 91       		.byte	0x91
+ 515 0125 75       		.sleb128 -11
+ 516 0126 07       		.uleb128 0x7
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 14
+
+
+ 517 0127 5B010000 		.4byte	.LASF23
+ 518 012b 01       		.byte	0x1
+ 519 012c 55       		.byte	0x55
+ 520 012d 81000000 		.4byte	0x81
+ 521 0131 02       		.uleb128 0x2
+ 522 0132 91       		.byte	0x91
+ 523 0133 74       		.sleb128 -12
+ 524 0134 07       		.uleb128 0x7
+ 525 0135 AB010000 		.4byte	.LASF24
+ 526 0139 01       		.byte	0x1
+ 527 013a 57       		.byte	0x57
+ 528 013b 9F010000 		.4byte	0x19f
+ 529 013f 03       		.uleb128 0x3
+ 530 0140 91       		.byte	0x91
+ 531 0141 BC7F     		.sleb128 -68
+ 532 0143 07       		.uleb128 0x7
+ 533 0144 D6010000 		.4byte	.LASF25
+ 534 0148 01       		.byte	0x1
+ 535 0149 58       		.byte	0x58
+ 536 014a AF010000 		.4byte	0x1af
+ 537 014e 03       		.uleb128 0x3
+ 538 014f 91       		.byte	0x91
+ 539 0150 E87E     		.sleb128 -152
+ 540 0152 07       		.uleb128 0x7
+ 541 0153 DB000000 		.4byte	.LASF26
+ 542 0157 01       		.byte	0x1
+ 543 0158 5D       		.byte	0x5d
+ 544 0159 8D000000 		.4byte	0x8d
+ 545 015d 02       		.uleb128 0x2
+ 546 015e 91       		.byte	0x91
+ 547 015f 66       		.sleb128 -26
+ 548 0160 08       		.uleb128 0x8
+ 549 0161 6E00     		.ascii	"n\000"
+ 550 0163 01       		.byte	0x1
+ 551 0164 6A       		.byte	0x6a
+ 552 0165 68000000 		.4byte	0x68
+ 553 0169 02       		.uleb128 0x2
+ 554 016a 91       		.byte	0x91
+ 555 016b 70       		.sleb128 -16
+ 556 016c 07       		.uleb128 0x7
+ 557 016d C1000000 		.4byte	.LASF27
+ 558 0171 01       		.byte	0x1
+ 559 0172 B3       		.byte	0xb3
+ 560 0173 68000000 		.4byte	0x68
+ 561 0177 02       		.uleb128 0x2
+ 562 0178 91       		.byte	0x91
+ 563 0179 6C       		.sleb128 -20
+ 564 017a 07       		.uleb128 0x7
+ 565 017b 54010000 		.4byte	.LASF28
+ 566 017f 01       		.byte	0x1
+ 567 0180 B4       		.byte	0xb4
+ 568 0181 68000000 		.4byte	0x68
+ 569 0185 02       		.uleb128 0x2
+ 570 0186 91       		.byte	0x91
+ 571 0187 68       		.sleb128 -24
+ 572 0188 09       		.uleb128 0x9
+ 573 0189 80010000 		.4byte	.LBB2
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 15
+
+
+ 574 018d 4E000000 		.4byte	.LBE2-.LBB2
+ 575 0191 08       		.uleb128 0x8
+ 576 0192 7000     		.ascii	"p\000"
+ 577 0194 01       		.byte	0x1
+ 578 0195 B7       		.byte	0xb7
+ 579 0196 68000000 		.4byte	0x68
+ 580 019a 02       		.uleb128 0x2
+ 581 019b 91       		.byte	0x91
+ 582 019c 5C       		.sleb128 -36
+ 583 019d 00       		.byte	0
+ 584 019e 00       		.byte	0
+ 585 019f 0A       		.uleb128 0xa
+ 586 01a0 B3000000 		.4byte	0xb3
+ 587 01a4 AF010000 		.4byte	0x1af
+ 588 01a8 0B       		.uleb128 0xb
+ 589 01a9 BA000000 		.4byte	0xba
+ 590 01ad 1F       		.byte	0x1f
+ 591 01ae 00       		.byte	0
+ 592 01af 0A       		.uleb128 0xa
+ 593 01b0 A5000000 		.4byte	0xa5
+ 594 01b4 BF010000 		.4byte	0x1bf
+ 595 01b8 0B       		.uleb128 0xb
+ 596 01b9 BA000000 		.4byte	0xba
+ 597 01bd 14       		.byte	0x14
+ 598 01be 00       		.byte	0
+ 599 01bf 0C       		.uleb128 0xc
+ 600 01c0 47010000 		.4byte	.LASF33
+ 601 01c4 05       		.byte	0x5
+ 602 01c5 9606     		.2byte	0x696
+ 603 01c7 CB010000 		.4byte	0x1cb
+ 604 01cb 0D       		.uleb128 0xd
+ 605 01cc 76000000 		.4byte	0x76
+ 606 01d0 00       		.byte	0
+ 607              		.section	.debug_abbrev,"",%progbits
+ 608              	.Ldebug_abbrev0:
+ 609 0000 01       		.uleb128 0x1
+ 610 0001 11       		.uleb128 0x11
+ 611 0002 01       		.byte	0x1
+ 612 0003 25       		.uleb128 0x25
+ 613 0004 0E       		.uleb128 0xe
+ 614 0005 13       		.uleb128 0x13
+ 615 0006 0B       		.uleb128 0xb
+ 616 0007 03       		.uleb128 0x3
+ 617 0008 0E       		.uleb128 0xe
+ 618 0009 1B       		.uleb128 0x1b
+ 619 000a 0E       		.uleb128 0xe
+ 620 000b 55       		.uleb128 0x55
+ 621 000c 17       		.uleb128 0x17
+ 622 000d 11       		.uleb128 0x11
+ 623 000e 01       		.uleb128 0x1
+ 624 000f 10       		.uleb128 0x10
+ 625 0010 17       		.uleb128 0x17
+ 626 0011 00       		.byte	0
+ 627 0012 00       		.byte	0
+ 628 0013 02       		.uleb128 0x2
+ 629 0014 24       		.uleb128 0x24
+ 630 0015 00       		.byte	0
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 16
+
+
+ 631 0016 0B       		.uleb128 0xb
+ 632 0017 0B       		.uleb128 0xb
+ 633 0018 3E       		.uleb128 0x3e
+ 634 0019 0B       		.uleb128 0xb
+ 635 001a 03       		.uleb128 0x3
+ 636 001b 0E       		.uleb128 0xe
+ 637 001c 00       		.byte	0
+ 638 001d 00       		.byte	0
+ 639 001e 03       		.uleb128 0x3
+ 640 001f 16       		.uleb128 0x16
+ 641 0020 00       		.byte	0
+ 642 0021 03       		.uleb128 0x3
+ 643 0022 0E       		.uleb128 0xe
+ 644 0023 3A       		.uleb128 0x3a
+ 645 0024 0B       		.uleb128 0xb
+ 646 0025 3B       		.uleb128 0x3b
+ 647 0026 0B       		.uleb128 0xb
+ 648 0027 49       		.uleb128 0x49
+ 649 0028 13       		.uleb128 0x13
+ 650 0029 00       		.byte	0
+ 651 002a 00       		.byte	0
+ 652 002b 04       		.uleb128 0x4
+ 653 002c 24       		.uleb128 0x24
+ 654 002d 00       		.byte	0
+ 655 002e 0B       		.uleb128 0xb
+ 656 002f 0B       		.uleb128 0xb
+ 657 0030 3E       		.uleb128 0x3e
+ 658 0031 0B       		.uleb128 0xb
+ 659 0032 03       		.uleb128 0x3
+ 660 0033 08       		.uleb128 0x8
+ 661 0034 00       		.byte	0
+ 662 0035 00       		.byte	0
+ 663 0036 05       		.uleb128 0x5
+ 664 0037 16       		.uleb128 0x16
+ 665 0038 00       		.byte	0
+ 666 0039 03       		.uleb128 0x3
+ 667 003a 0E       		.uleb128 0xe
+ 668 003b 3A       		.uleb128 0x3a
+ 669 003c 0B       		.uleb128 0xb
+ 670 003d 3B       		.uleb128 0x3b
+ 671 003e 05       		.uleb128 0x5
+ 672 003f 49       		.uleb128 0x49
+ 673 0040 13       		.uleb128 0x13
+ 674 0041 00       		.byte	0
+ 675 0042 00       		.byte	0
+ 676 0043 06       		.uleb128 0x6
+ 677 0044 2E       		.uleb128 0x2e
+ 678 0045 01       		.byte	0x1
+ 679 0046 3F       		.uleb128 0x3f
+ 680 0047 19       		.uleb128 0x19
+ 681 0048 03       		.uleb128 0x3
+ 682 0049 0E       		.uleb128 0xe
+ 683 004a 3A       		.uleb128 0x3a
+ 684 004b 0B       		.uleb128 0xb
+ 685 004c 3B       		.uleb128 0x3b
+ 686 004d 0B       		.uleb128 0xb
+ 687 004e 49       		.uleb128 0x49
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 17
+
+
+ 688 004f 13       		.uleb128 0x13
+ 689 0050 11       		.uleb128 0x11
+ 690 0051 01       		.uleb128 0x1
+ 691 0052 12       		.uleb128 0x12
+ 692 0053 06       		.uleb128 0x6
+ 693 0054 40       		.uleb128 0x40
+ 694 0055 18       		.uleb128 0x18
+ 695 0056 9642     		.uleb128 0x2116
+ 696 0058 19       		.uleb128 0x19
+ 697 0059 01       		.uleb128 0x1
+ 698 005a 13       		.uleb128 0x13
+ 699 005b 00       		.byte	0
+ 700 005c 00       		.byte	0
+ 701 005d 07       		.uleb128 0x7
+ 702 005e 34       		.uleb128 0x34
+ 703 005f 00       		.byte	0
+ 704 0060 03       		.uleb128 0x3
+ 705 0061 0E       		.uleb128 0xe
+ 706 0062 3A       		.uleb128 0x3a
+ 707 0063 0B       		.uleb128 0xb
+ 708 0064 3B       		.uleb128 0x3b
+ 709 0065 0B       		.uleb128 0xb
+ 710 0066 49       		.uleb128 0x49
+ 711 0067 13       		.uleb128 0x13
+ 712 0068 02       		.uleb128 0x2
+ 713 0069 18       		.uleb128 0x18
+ 714 006a 00       		.byte	0
+ 715 006b 00       		.byte	0
+ 716 006c 08       		.uleb128 0x8
+ 717 006d 34       		.uleb128 0x34
+ 718 006e 00       		.byte	0
+ 719 006f 03       		.uleb128 0x3
+ 720 0070 08       		.uleb128 0x8
+ 721 0071 3A       		.uleb128 0x3a
+ 722 0072 0B       		.uleb128 0xb
+ 723 0073 3B       		.uleb128 0x3b
+ 724 0074 0B       		.uleb128 0xb
+ 725 0075 49       		.uleb128 0x49
+ 726 0076 13       		.uleb128 0x13
+ 727 0077 02       		.uleb128 0x2
+ 728 0078 18       		.uleb128 0x18
+ 729 0079 00       		.byte	0
+ 730 007a 00       		.byte	0
+ 731 007b 09       		.uleb128 0x9
+ 732 007c 0B       		.uleb128 0xb
+ 733 007d 01       		.byte	0x1
+ 734 007e 11       		.uleb128 0x11
+ 735 007f 01       		.uleb128 0x1
+ 736 0080 12       		.uleb128 0x12
+ 737 0081 06       		.uleb128 0x6
+ 738 0082 00       		.byte	0
+ 739 0083 00       		.byte	0
+ 740 0084 0A       		.uleb128 0xa
+ 741 0085 01       		.uleb128 0x1
+ 742 0086 01       		.byte	0x1
+ 743 0087 49       		.uleb128 0x49
+ 744 0088 13       		.uleb128 0x13
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 18
+
+
+ 745 0089 01       		.uleb128 0x1
+ 746 008a 13       		.uleb128 0x13
+ 747 008b 00       		.byte	0
+ 748 008c 00       		.byte	0
+ 749 008d 0B       		.uleb128 0xb
+ 750 008e 21       		.uleb128 0x21
+ 751 008f 00       		.byte	0
+ 752 0090 49       		.uleb128 0x49
+ 753 0091 13       		.uleb128 0x13
+ 754 0092 2F       		.uleb128 0x2f
+ 755 0093 0B       		.uleb128 0xb
+ 756 0094 00       		.byte	0
+ 757 0095 00       		.byte	0
+ 758 0096 0C       		.uleb128 0xc
+ 759 0097 34       		.uleb128 0x34
+ 760 0098 00       		.byte	0
+ 761 0099 03       		.uleb128 0x3
+ 762 009a 0E       		.uleb128 0xe
+ 763 009b 3A       		.uleb128 0x3a
+ 764 009c 0B       		.uleb128 0xb
+ 765 009d 3B       		.uleb128 0x3b
+ 766 009e 05       		.uleb128 0x5
+ 767 009f 49       		.uleb128 0x49
+ 768 00a0 13       		.uleb128 0x13
+ 769 00a1 3F       		.uleb128 0x3f
+ 770 00a2 19       		.uleb128 0x19
+ 771 00a3 3C       		.uleb128 0x3c
+ 772 00a4 19       		.uleb128 0x19
+ 773 00a5 00       		.byte	0
+ 774 00a6 00       		.byte	0
+ 775 00a7 0D       		.uleb128 0xd
+ 776 00a8 35       		.uleb128 0x35
+ 777 00a9 00       		.byte	0
+ 778 00aa 49       		.uleb128 0x49
+ 779 00ab 13       		.uleb128 0x13
+ 780 00ac 00       		.byte	0
+ 781 00ad 00       		.byte	0
+ 782 00ae 00       		.byte	0
+ 783              		.section	.debug_aranges,"",%progbits
+ 784 0000 1C000000 		.4byte	0x1c
+ 785 0004 0200     		.2byte	0x2
+ 786 0006 00000000 		.4byte	.Ldebug_info0
+ 787 000a 04       		.byte	0x4
+ 788 000b 00       		.byte	0
+ 789 000c 0000     		.2byte	0
+ 790 000e 0000     		.2byte	0
+ 791 0010 00000000 		.4byte	.LFB63
+ 792 0014 68020000 		.4byte	.LFE63-.LFB63
+ 793 0018 00000000 		.4byte	0
+ 794 001c 00000000 		.4byte	0
+ 795              		.section	.debug_ranges,"",%progbits
+ 796              	.Ldebug_ranges0:
+ 797 0000 00000000 		.4byte	.LFB63
+ 798 0004 68020000 		.4byte	.LFE63
+ 799 0008 00000000 		.4byte	0
+ 800 000c 00000000 		.4byte	0
+ 801              		.section	.debug_line,"",%progbits
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 19
+
+
+ 802              	.Ldebug_line0:
+ 803 0000 DA010000 		.section	.debug_str,"MS",%progbits,1
+ 803      02004901 
+ 803      00000201 
+ 803      FB0E0D00 
+ 803      01010101 
+ 804              	.LASF20:
+ 805 0000 456D756C 		.ascii	"EmulatedData\000"
+ 805      61746564 
+ 805      44617461 
+ 805      00
+ 806              	.LASF9:
+ 807 000d 5F5F696E 		.ascii	"__int32_t\000"
+ 807      7433325F 
+ 807      7400
+ 808              	.LASF19:
+ 809 0017 4F757470 		.ascii	"Output\000"
+ 809      757400
+ 810              	.LASF21:
+ 811 001e 436F6E74 		.ascii	"ContinuouslySendData\000"
+ 811      696E756F 
+ 811      75736C79 
+ 811      53656E64 
+ 811      44617461 
+ 812              	.LASF29:
+ 813 0033 474E5520 		.ascii	"GNU C 4.9.3 20150303 (release) [ARM/embedded-4_9-br"
+ 813      4320342E 
+ 813      392E3320 
+ 813      32303135 
+ 813      30333033 
+ 814 0066 616E6368 		.ascii	"anch revision 221220] -mcpu=cortex-m3 -mthumb -g -O"
+ 814      20726576 
+ 814      6973696F 
+ 814      6E203232 
+ 814      31323230 
+ 815 0099 30202D66 		.ascii	"0 -ffunction-sections -ffat-lto-objects\000"
+ 815      66756E63 
+ 815      74696F6E 
+ 815      2D736563 
+ 815      74696F6E 
+ 816              	.LASF27:
+ 817 00c1 706F7765 		.ascii	"power\000"
+ 817      7200
+ 818              	.LASF14:
+ 819 00c7 666C6F61 		.ascii	"float\000"
+ 819      7400
+ 820              	.LASF1:
+ 821 00cd 756E7369 		.ascii	"unsigned char\000"
+ 821      676E6564 
+ 821      20636861 
+ 821      7200
+ 822              	.LASF26:
+ 823 00db 76726D73 		.ascii	"vrms\000"
+ 823      00
+ 824              	.LASF30:
+ 825 00e0 2E5C6D61 		.ascii	".\\main.c\000"
+ 825      696E2E63 
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 20
+
+
+ 825      00
+ 826              	.LASF31:
+ 827 00e9 433A5C55 		.ascii	"C:\\Users\\Monica P\\Desktop\\Assignment\\CE95277 A"
+ 827      73657273 
+ 827      5C4D6F6E 
+ 827      69636120 
+ 827      505C4465 
+ 828 0117 44432061 		.ascii	"DC and UART\\power.cydsn\000"
+ 828      6E642055 
+ 828      4152545C 
+ 828      706F7765 
+ 828      722E6379 
+ 829              	.LASF5:
+ 830 012f 6C6F6E67 		.ascii	"long unsigned int\000"
+ 830      20756E73 
+ 830      69676E65 
+ 830      6420696E 
+ 830      7400
+ 831              	.LASF13:
+ 832 0141 696E7433 		.ascii	"int32\000"
+ 832      3200
+ 833              	.LASF33:
+ 834 0147 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 834      52784275 
+ 834      66666572 
+ 834      00
+ 835              	.LASF28:
+ 836 0154 706F7765 		.ascii	"power1\000"
+ 836      723100
+ 837              	.LASF23:
+ 838 015b 53656E64 		.ascii	"SendEmulatedData\000"
+ 838      456D756C 
+ 838      61746564 
+ 838      44617461 
+ 838      00
+ 839              	.LASF15:
+ 840 016c 646F7562 		.ascii	"double\000"
+ 840      6C6500
+ 841              	.LASF32:
+ 842 0173 6D61696E 		.ascii	"main\000"
+ 842      00
+ 843              	.LASF12:
+ 844 0178 75696E74 		.ascii	"uint16\000"
+ 844      313600
+ 845              	.LASF8:
+ 846 017f 756E7369 		.ascii	"unsigned int\000"
+ 846      676E6564 
+ 846      20696E74 
+ 846      00
+ 847              	.LASF7:
+ 848 018c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 848      206C6F6E 
+ 848      6720756E 
+ 848      7369676E 
+ 848      65642069 
+ 849              	.LASF10:
+ 850 01a3 696E7433 		.ascii	"int32_t\000"
+ARM GAS  C:\Users\MONICA~1\AppData\Local\Temp\ccMhgwSS.s 			page 21
+
+
+ 850      325F7400 
+ 851              	.LASF24:
+ 852 01ab 5472616E 		.ascii	"TransmitBuffer\000"
+ 852      736D6974 
+ 852      42756666 
+ 852      657200
+ 853              	.LASF17:
+ 854 01ba 73697A65 		.ascii	"sizetype\000"
+ 854      74797065 
+ 854      00
+ 855              	.LASF6:
+ 856 01c3 6C6F6E67 		.ascii	"long long int\000"
+ 856      206C6F6E 
+ 856      6720696E 
+ 856      7400
+ 857              	.LASF16:
+ 858 01d1 63686172 		.ascii	"char\000"
+ 858      00
+ 859              	.LASF25:
+ 860 01d6 766F6C74 		.ascii	"volt\000"
+ 860      00
+ 861              	.LASF2:
+ 862 01db 73686F72 		.ascii	"short int\000"
+ 862      7420696E 
+ 862      7400
+ 863              	.LASF11:
+ 864 01e5 75696E74 		.ascii	"uint8\000"
+ 864      3800
+ 865              	.LASF4:
+ 866 01eb 6C6F6E67 		.ascii	"long int\000"
+ 866      20696E74 
+ 866      00
+ 867              	.LASF18:
+ 868 01f4 6C6F6E67 		.ascii	"long double\000"
+ 868      20646F75 
+ 868      626C6500 
+ 869              	.LASF0:
+ 870 0200 7369676E 		.ascii	"signed char\000"
+ 870      65642063 
+ 870      68617200 
+ 871              	.LASF3:
+ 872 020c 73686F72 		.ascii	"short unsigned int\000"
+ 872      7420756E 
+ 872      7369676E 
+ 872      65642069 
+ 872      6E7400
+ 873              	.LASF22:
+ 874 021f 53656E64 		.ascii	"SendSingleByte\000"
+ 874      53696E67 
+ 874      6C654279 
+ 874      746500
+ 875              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.9.3 20150303 (release) [ARM/embedded-4_9-br
